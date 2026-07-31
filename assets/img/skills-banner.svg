@@ -1,0 +1,346 @@
+<svg viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" id="heatBanner">
+  <defs>
+  <style>
+    #heatBanner .heat-face {
+      animation: heatPulse 9s ease-in-out infinite;
+    }
+    @keyframes heatPulse {
+      0%, 100% { filter: hue-rotate(0deg) saturate(1) brightness(1); }
+      50%      { filter: hue-rotate(24deg) saturate(1.3) brightness(1.2); }
+    }
+    #heatBanner .glow-pulse {
+      animation: glowPulse 6s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.55; transform: scale(1); }
+      50%      { opacity: 1; transform: scale(1.08); }
+    }
+    #heatBanner .connector-line {
+      animation: dashFlow 1.2s linear infinite;
+    }
+    @keyframes dashFlow {
+      to { stroke-dashoffset: -14; }
+    }
+    #heatBanner .icon-badge {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: badgePulse 6s ease-in-out infinite;
+    }
+    @keyframes badgePulse {
+      0%, 100% { stroke-opacity: 0.7; }
+      50%      { stroke-opacity: 1; }
+    }
+    #heatBanner .icon-inner {
+      transform-box: fill-box;
+      transform-origin: center;
+      opacity: 0;
+      animation: popIcon 10s ease-in-out infinite;
+    }
+    @keyframes popIcon {
+      0%   { opacity: 0; transform: scale(0.2); }
+      8%   { opacity: 1; transform: scale(1.25); }
+      14%  { opacity: 1; transform: scale(1); }
+      88%  { opacity: 1; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    #heatBanner .tooltip {
+      opacity: 0;
+      transform-box: fill-box;
+      transform-origin: center;
+      transform: translateY(6px) scale(0.85);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      pointer-events: none;
+    }
+    #heatBanner .tooltip-group:hover .tooltip {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    #heatBanner .tooltip-group:hover .icon-inner {
+      animation-play-state: paused;
+      opacity: 1;
+      transform: scale(1.15);
+    }
+    #heatBanner .icon-hit {
+      cursor: pointer;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #heatBanner .heat-face, #heatBanner .glow-pulse, #heatBanner .connector-line, #heatBanner .icon-badge, #heatBanner .icon-inner {
+        animation: none !important;
+      }
+      #heatBanner .icon-inner { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#081815"/>
+      <stop offset="100%" stop-color="#0f2b26"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="35%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#e8482c" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#e8482c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="420" fill="url(#bg)"/>
+  <circle cx="420" cy="160" r="260" fill="url(#glow)" class="glow-pulse"/>
+
+  <!-- faint digital-twin data mesh -->
+  <g stroke="#4fd1a5" stroke-opacity="0.08" stroke-width="1">
+    <line x1="0" y1="0" x2="0" y2="420"/><line x1="60" y1="0" x2="60" y2="420"/><line x1="120" y1="0" x2="120" y2="420"/><line x1="180" y1="0" x2="180" y2="420"/><line x1="240" y1="0" x2="240" y2="420"/><line x1="300" y1="0" x2="300" y2="420"/><line x1="360" y1="0" x2="360" y2="420"/><line x1="420" y1="0" x2="420" y2="420"/><line x1="480" y1="0" x2="480" y2="420"/><line x1="540" y1="0" x2="540" y2="420"/><line x1="600" y1="0" x2="600" y2="420"/><line x1="660" y1="0" x2="660" y2="420"/><line x1="720" y1="0" x2="720" y2="420"/><line x1="780" y1="0" x2="780" y2="420"/><line x1="840" y1="0" x2="840" y2="420"/><line x1="900" y1="0" x2="900" y2="420"/><line x1="960" y1="0" x2="960" y2="420"/><line x1="1020" y1="0" x2="1020" y2="420"/><line x1="1080" y1="0" x2="1080" y2="420"/><line x1="1140" y1="0" x2="1140" y2="420"/>
+    <line x1="0" y1="0" x2="1200" y2="0"/><line x1="0" y1="60" x2="1200" y2="60"/><line x1="0" y1="120" x2="1200" y2="120"/><line x1="0" y1="180" x2="1200" y2="180"/><line x1="0" y1="240" x2="1200" y2="240"/><line x1="0" y1="300" x2="1200" y2="300"/><line x1="0" y1="360" x2="1200" y2="360"/>
+  </g>
+
+  <!-- city -->
+  <g>
+    <polygon points="300.0,37.0 346.0,60.0 300.0,83.0 254.0,60.0" fill="#173a33" stroke="#1e4a43" stroke-width="0.5"/>
+<polygon points="116.0,129.0 162.0,152.0 116.0,175.0 70.0,152.0" fill="#173a33" stroke="#1e4a43" stroke-width="0.5"/>
+<polygon points="530.0,152.0 576.0,175.0 530.0,198.0 484.0,175.0" fill="#173a33" stroke="#1e4a43" stroke-width="0.5"/>
+<polygon points="346.0,198.0 392.0,221.0 346.0,244.0 300.0,221.0" fill="#2f7fb0" stroke="#1e4a43" stroke-width="0.5" fill-opacity="0.85"/>
+<polygon points="392.0,221.0 438.0,244.0 392.0,267.0 346.0,244.0" fill="#173a33" stroke="#1e4a43" stroke-width="0.5"/>
+<polygon points="300.0,221.0 346.0,244.0 300.0,267.0 254.0,244.0" fill="#173a33" stroke="#1e4a43" stroke-width="0.5"/>
+<polygon points="346.0,244.0 392.0,267.0 346.0,290.0 300.0,267.0" fill="#2f7fb0" stroke="#1e4a43" stroke-width="0.5" fill-opacity="0.85"/>
+<polygon points="300.0,67.0 346.0,90.0 346.0,106.0 300.0,83.0" fill="rgb(81,145,72)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="346.0,90.0 392.0,67.0 392.0,83.0 346.0,106.0" fill="rgb(61,110,55)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="346.0,44.0 392.0,67.0 346.0,90.0 300.0,67.0" fill="rgb(117,209,104)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<polygon points="208.0,67.0 254.0,90.0 254.0,106.0 208.0,83.0" fill="rgb(81,145,72)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="254.0,90.0 300.0,67.0 300.0,83.0 254.0,106.0" fill="rgb(61,110,55)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="254.0,44.0 300.0,67.0 254.0,90.0 208.0,67.0" fill="rgb(117,209,104)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<polygon points="346.0,74.0 392.0,97.0 392.0,129.0 346.0,106.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="392.0,97.0 438.0,74.0 438.0,106.0 392.0,129.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="392.0,51.0 438.0,74.0 392.0,97.0 346.0,74.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="412.7" cy="96.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="96.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="254.0,74.0 300.0,97.0 300.0,129.0 254.0,106.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="300.0,97.0 346.0,74.0 346.0,106.0 300.0,129.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="300.0,51.0 346.0,74.0 300.0,97.0 254.0,74.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="320.7" cy="96.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="96.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="162.0,74.0 208.0,97.0 208.0,129.0 162.0,106.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="208.0,97.0 254.0,74.0 254.0,106.0 208.0,129.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="208.0,51.0 254.0,74.0 208.0,97.0 162.0,74.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="228.7" cy="96.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="187.3" cy="96.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="392.0,81.0 438.0,104.0 438.0,152.0 392.0,129.0" fill="rgb(159,161,46)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="438.0,104.0 484.0,81.0 484.0,129.0 438.0,152.0" fill="rgb(120,122,35)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="438.0,58.0 484.0,81.0 438.0,104.0 392.0,81.0" fill="rgb(229,231,66)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="458.7" cy="119.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="417.3" cy="119.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="458.7" cy="103.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="417.3" cy="103.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="300.0,65.0 346.0,88.0 346.0,152.0 300.0,129.0" fill="rgb(209,162,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="346.0,88.0 392.0,65.0 392.0,129.0 346.0,152.0" fill="rgb(158,122,33)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="346.0,42.0 392.0,65.0 346.0,88.0 300.0,65.0" fill="rgb(255,232,63)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="366.7" cy="119.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="119.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="103.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="103.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="87.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="87.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="208.0,81.0 254.0,104.0 254.0,152.0 208.0,129.0" fill="rgb(159,161,46)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="254.0,104.0 300.0,81.0 300.0,129.0 254.0,152.0" fill="rgb(120,122,35)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="254.0,58.0 300.0,81.0 254.0,104.0 208.0,81.0" fill="rgb(229,231,66)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="274.7" cy="119.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="233.3" cy="119.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="274.7" cy="103.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="233.3" cy="103.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="116.0,113.0 162.0,136.0 162.0,152.0 116.0,129.0" fill="rgb(81,145,72)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="162.0,136.0 208.0,113.0 208.0,129.0 162.0,152.0" fill="rgb(61,110,55)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="162.0,90.0 208.0,113.0 162.0,136.0 116.0,113.0" fill="rgb(117,209,104)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<polygon points="438.0,120.0 484.0,143.0 484.0,175.0 438.0,152.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="484.0,143.0 530.0,120.0 530.0,152.0 484.0,175.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="484.0,97.0 530.0,120.0 484.0,143.0 438.0,120.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="504.7" cy="142.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="463.3" cy="142.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="346.0,72.0 392.0,95.0 392.0,175.0 346.0,152.0" fill="rgb(209,124,52)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="392.0,95.0 438.0,72.0 438.0,152.0 392.0,175.0" fill="rgb(158,94,39)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="392.0,49.0 438.0,72.0 392.0,95.0 346.0,72.0" fill="rgb(255,178,74)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="412.7" cy="142.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="142.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="412.7" cy="126.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="126.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="412.7" cy="110.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="110.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="412.7" cy="94.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="94.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon class="heat-face" points="254.0,56.0 300.0,79.0 300.0,175.0 254.0,152.0" fill="rgb(201,91,47)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="300.0,79.0 346.0,56.0 346.0,152.0 300.0,175.0" fill="rgb(152,69,35)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="300.0,33.0 346.0,56.0 300.0,79.0 254.0,56.0" fill="rgb(255,131,67)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="320.7" cy="142.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="142.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="320.7" cy="126.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="126.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="320.7" cy="110.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="110.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="320.7" cy="94.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="94.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="320.7" cy="78.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="78.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="162.0,120.0 208.0,143.0 208.0,175.0 162.0,152.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="208.0,143.0 254.0,120.0 254.0,152.0 208.0,175.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="208.0,97.0 254.0,120.0 208.0,143.0 162.0,120.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="228.7" cy="142.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="187.3" cy="142.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="392.0,127.0 438.0,150.0 438.0,198.0 392.0,175.0" fill="rgb(159,161,46)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="438.0,150.0 484.0,127.0 484.0,175.0 438.0,198.0" fill="rgb(120,122,35)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="438.0,104.0 484.0,127.0 438.0,150.0 392.0,127.0" fill="rgb(229,231,66)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="458.7" cy="165.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="417.3" cy="165.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="458.7" cy="149.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="417.3" cy="149.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon class="heat-face" points="300.0,63.0 346.0,86.0 346.0,198.0 300.0,175.0" fill="rgb(190,59,36)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="346.0,86.0 392.0,63.0 392.0,175.0 346.0,198.0" fill="rgb(144,45,27)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="346.0,40.0 392.0,63.0 346.0,86.0 300.0,63.0" fill="rgb(255,85,52)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="366.7" cy="165.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="165.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="149.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="149.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="133.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="133.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="117.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="117.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="101.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="101.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="85.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="85.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="208.0,111.0 254.0,134.0 254.0,198.0 208.0,175.0" fill="rgb(209,162,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="254.0,134.0 300.0,111.0 300.0,175.0 254.0,198.0" fill="rgb(158,122,33)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="254.0,88.0 300.0,111.0 254.0,134.0 208.0,111.0" fill="rgb(255,232,63)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="274.7" cy="165.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="233.3" cy="165.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="274.7" cy="149.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="233.3" cy="149.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="274.7" cy="133.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="233.3" cy="133.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="116.0,159.0 162.0,182.0 162.0,198.0 116.0,175.0" fill="rgb(81,145,72)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="162.0,182.0 208.0,159.0 208.0,175.0 162.0,198.0" fill="rgb(61,110,55)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="162.0,136.0 208.0,159.0 162.0,182.0 116.0,159.0" fill="rgb(117,209,104)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<polygon points="438.0,182.0 484.0,205.0 484.0,221.0 438.0,198.0" fill="rgb(81,145,72)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="484.0,205.0 530.0,182.0 530.0,198.0 484.0,221.0" fill="rgb(61,110,55)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="484.0,159.0 530.0,182.0 484.0,205.0 438.0,182.0" fill="rgb(117,209,104)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<polygon points="346.0,134.0 392.0,157.0 392.0,221.0 346.0,198.0" fill="rgb(209,162,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="392.0,157.0 438.0,134.0 438.0,198.0 392.0,221.0" fill="rgb(158,122,33)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="392.0,111.0 438.0,134.0 392.0,157.0 346.0,134.0" fill="rgb(255,232,63)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="412.7" cy="188.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="188.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="412.7" cy="172.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="172.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="412.7" cy="156.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="156.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="254.0,118.0 300.0,141.0 300.0,221.0 254.0,198.0" fill="rgb(209,124,52)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="300.0,141.0 346.0,118.0 346.0,198.0 300.0,221.0" fill="rgb(158,94,39)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="300.0,95.0 346.0,118.0 300.0,141.0 254.0,118.0" fill="rgb(255,178,74)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="320.7" cy="188.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="188.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="320.7" cy="172.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="172.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="320.7" cy="156.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="156.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="320.7" cy="140.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="140.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="162.0,166.0 208.0,189.0 208.0,221.0 162.0,198.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="208.0,189.0 254.0,166.0 254.0,198.0 208.0,221.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="208.0,143.0 254.0,166.0 208.0,189.0 162.0,166.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="228.7" cy="188.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="187.3" cy="188.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="392.0,189.0 438.0,212.0 438.0,244.0 392.0,221.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="438.0,212.0 484.0,189.0 484.0,221.0 438.0,244.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="438.0,166.0 484.0,189.0 438.0,212.0 392.0,189.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="458.7" cy="211.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="417.3" cy="211.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="300.0,173.0 346.0,196.0 346.0,244.0 300.0,221.0" fill="rgb(159,161,46)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="346.0,196.0 392.0,173.0 392.0,221.0 346.0,244.0" fill="rgb(120,122,35)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="346.0,150.0 392.0,173.0 346.0,196.0 300.0,173.0" fill="rgb(229,231,66)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="366.7" cy="211.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="211.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="195.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="195.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="208.0,189.0 254.0,212.0 254.0,244.0 208.0,221.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="254.0,212.0 300.0,189.0 300.0,221.0 254.0,244.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="254.0,166.0 300.0,189.0 254.0,212.0 208.0,189.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="274.7" cy="211.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="233.3" cy="211.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="392.0" cy="238.0" r="7" fill="#3da86b" opacity="0.9"/>
+<rect x="390.5" y="242.0" width="3" height="6" fill="#5a3d2b"/>
+<circle cx="300.0" cy="238.0" r="7" fill="#3da86b" opacity="0.9"/>
+<rect x="298.5" y="242.0" width="3" height="6" fill="#5a3d2b"/>
+<circle cx="116.0" cy="146.0" r="7" fill="#3da86b" opacity="0.9"/>
+<rect x="114.5" y="150.0" width="3" height="6" fill="#5a3d2b"/>
+<circle cx="162.0" cy="169.0" r="7" fill="#3da86b" opacity="0.9"/>
+<rect x="160.5" y="173.0" width="3" height="6" fill="#5a3d2b"/>
+<circle cx="438.0" cy="215.0" r="7" fill="#3da86b" opacity="0.9"/>
+<rect x="436.5" y="219.0" width="3" height="6" fill="#5a3d2b"/>
+  </g>
+
+  
+    <line x1="120" y1="100" x2="255" y2="130" stroke="#4fd1a5" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3,4" class="connector-line"/>
+    <g class="tooltip-group">
+    <circle cx="120" cy="100" r="30" fill="#0f2b26" stroke="#1e4a43" stroke-width="1.5" class="icon-badge" style="animation-delay:0s"/>
+    
+      <g transform="translate(120,100)">
+      <g class="icon-inner" style="animation-delay:0s">
+        <rect x="-4" y="-22" width="8" height="34" rx="4" fill="#0a1f1c" stroke="#e8482c" stroke-width="1.5"/>
+        <circle cx="0" cy="16" r="9" fill="#e8482c"/>
+        <rect x="-2.5" y="-16" width="5" height="26" rx="2.5" fill="#e8482c"/>
+      </g>
+      </g>
+      <circle class="icon-hit" cx="120" cy="100" r="34" fill="transparent"/>
+      <g class="tooltip" transform="translate(120,48)">
+        <rect x="-78" y="-16" width="156" height="30" rx="7" fill="#0f2b26" stroke="#4fd1a5" stroke-width="1"/>
+        <text x="0" y="4" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="#e7fff5">Land Surface Temperature</text>
+      </g>
+    </g>
+  
+    <line x1="760" y1="90" x2="560" y2="130" stroke="#4fd1a5" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3,4" class="connector-line"/>
+    <g class="tooltip-group">
+    <circle cx="760" cy="90" r="30" fill="#0f2b26" stroke="#1e4a43" stroke-width="1.5" class="icon-badge" style="animation-delay:2.5s"/>
+    
+      <g transform="translate(760,90)">
+      <g class="icon-inner" style="animation-delay:2.5s">
+        <path d="M -14 12 C -14 -10, 10 -18, 16 -16 C 18 -8, 8 14, -14 12 Z" fill="#3da86b"/>
+        <path d="M -12 10 C -4 0, 4 -6, 14 -15" stroke="#173a33" stroke-width="1.2" fill="none"/>
+      </g>
+      </g>
+      <circle class="icon-hit" cx="760" cy="90" r="34" fill="transparent"/>
+      <g class="tooltip" transform="translate(760,38)">
+        <rect x="-78" y="-16" width="156" height="30" rx="7" fill="#0f2b26" stroke="#4fd1a5" stroke-width="1"/>
+        <text x="0" y="4" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="#e7fff5">Vegetation &amp; Green Cover</text>
+      </g>
+    </g>
+  
+    <line x1="800" y1="260" x2="600" y2="260" stroke="#4fd1a5" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3,4" class="connector-line"/>
+    <g class="tooltip-group">
+    <circle cx="800" cy="260" r="30" fill="#0f2b26" stroke="#1e4a43" stroke-width="1.5" class="icon-badge" style="animation-delay:5s"/>
+    
+      <g transform="translate(800,260)">
+      <g class="icon-inner" style="animation-delay:5s">
+        <path d="M 0 -18 C 10 -4, 14 6, 8 14 C 2 22, -12 20, -13 8 C -14 -2, -6 -10, 0 -18 Z" fill="#2f9fd8"/>
+      </g>
+      </g>
+      <circle class="icon-hit" cx="800" cy="260" r="34" fill="transparent"/>
+      <g class="tooltip" transform="translate(800,208)">
+        <rect x="-78" y="-16" width="156" height="30" rx="7" fill="#0f2b26" stroke="#4fd1a5" stroke-width="1"/>
+        <text x="0" y="4" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="#e7fff5">Water Bodies &amp; Drainage</text>
+      </g>
+    </g>
+  
+    <line x1="150" y1="300" x2="280" y2="280" stroke="#4fd1a5" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3,4" class="connector-line"/>
+    <g class="tooltip-group">
+    <circle cx="150" cy="300" r="30" fill="#0f2b26" stroke="#1e4a43" stroke-width="1.5" class="icon-badge" style="animation-delay:7.5s"/>
+    
+      <g transform="translate(150,300)">
+      <g class="icon-inner" style="animation-delay:7.5s">
+        <rect x="-14" y="0" width="7" height="16" fill="#4fd1a5"/>
+        <rect x="-4" y="-8" width="7" height="24" fill="#4fd1a5"/>
+        <rect x="6" y="-16" width="7" height="32" fill="#4fd1a5"/>
+      </g>
+      </g>
+      <circle class="icon-hit" cx="150" cy="300" r="34" fill="transparent"/>
+      <g class="tooltip" transform="translate(150,248)">
+        <rect x="-78" y="-16" width="156" height="30" rx="7" fill="#0f2b26" stroke="#4fd1a5" stroke-width="1"/>
+        <text x="0" y="4" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="#e7fff5">Digital Twin Analytics</text>
+      </g>
+    </g>
+
+  <text x="600" y="400" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" letter-spacing="3" fill="#4fd1a5" font-weight="700">URBAN HEAT MAPPING &#183; DIGITAL TWIN MODELING</text>
+</svg>

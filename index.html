@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ishraque Bin Khalil · Civil & Environmental Engineer</title>
+<meta name="description" content="Ishraque Bin Khalil, Civil and Environmental Engineer with six years of EIA/ESIA consulting experience in Bangladesh, now an MSc Spatial Engineering candidate at the University of Twente (ITC), Netherlands, focused on GIS, urban heat, and digital twins.">
+<meta name="theme-color" content="#0a1f1c">
+<meta property="og:title" content="Ishraque Bin Khalil · Civil & Environmental Engineer">
+<meta property="og:description" content="Environmental impact assessment, GIS & remote sensing, urban heat, and digital twin research, from Dhaka to Enschede.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topo-bg" aria-hidden="true"></div>
+
+<header class="site-header">
+  <nav class="nav container">
+    <a href="#top" class="logo">IBK</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="assets/cv/Ishraque_Bin_Khalil_CV_Netherlands.pdf" target="_blank" rel="noopener">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section id="top" class="hero container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <p class="eyebrow">Civil and Environmental Engineer &nbsp;·&nbsp; Urban Heat &nbsp;·&nbsp; Digital Twin &nbsp;·&nbsp; MSc Spatial Engineering @ University of Twente (ITC)</p>
+        <h1>Ishraque Bin Khalil</h1>
+        <p class="hero-lede">
+          Six years assessing the environmental and social impact of major infrastructure across Bangladesh
+          (railways, gas pipelines, ports, roads) for funders including the ADB, JICA, World Bank, and AIIB.
+          Now based in Enschede, Netherlands, building geospatial and disaster-risk analysis skills at ITC.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Get in touch</a>
+          <a href="#experience" class="btn btn-ghost">See my work</a>
+        </div>
+        <ul class="hero-links">
+          <li><a href="https://www.linkedin.com/in/ishraquebk/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://www.researchgate.net/profile/Ishraque-Khalil" target="_blank" rel="noopener">ResearchGate</a></li>
+          <li><a href="https://scholar.google.com/citations?hl=en&user=7U_EXPQAAAAJ" target="_blank" rel="noopener">Google Scholar</a></li>
+          <li><a href="https://github.com/IBK015" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="mailto:Ishraque.cee@gmail.com">Email</a></li>
+        </ul>
+        <div class="resume-links">
+          <span class="resume-label">Resume:</span>
+          <a href="assets/cv/Ishraque_Bin_Khalil_CV_Netherlands.pdf" target="_blank" rel="noopener">Netherlands CV (PDF) ↓</a>
+          <span class="resume-sep">·</span>
+          <a href="assets/cv/Ishraque_Bin_Khalil_CV_Bangladesh.pdf" target="_blank" rel="noopener">Bangladesh CV (PDF) ↓</a>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <img src="assets/img/ishraque.jpg" alt="Ishraque Bin Khalil" class="hero-photo">
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH FOCUS BANNER (inline SVG: animated + hover tooltips) -->
+  <div class="banner-wrap">
+<svg viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" id="heatBanner" class="banner-img" role="img" aria-label="Isometric urban heat map with digital twin data overlay: hover the icons for details">
+  <defs>
+  <style>
+    #heatBanner .heat-face {
+      animation: heatPulse 9s ease-in-out infinite;
+    }
+    @keyframes heatPulse {
+      0%, 100% { filter: hue-rotate(0deg) saturate(1) brightness(1); }
+      50%      { filter: hue-rotate(24deg) saturate(1.3) brightness(1.2); }
+    }
+    #heatBanner .glow-pulse {
+      animation: glowPulse 6s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.55; transform: scale(1); }
+      50%      { opacity: 1; transform: scale(1.08); }
+    }
+    #heatBanner .connector-line {
+      animation: dashFlow 1.2s linear infinite;
+    }
+    @keyframes dashFlow {
+      to { stroke-dashoffset: -14; }
+    }
+    #heatBanner .icon-badge {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: badgePulse 6s ease-in-out infinite;
+    }
+    @keyframes badgePulse {
+      0%, 100% { stroke-opacity: 0.7; }
+      50%      { stroke-opacity: 1; }
+    }
+    #heatBanner .icon-inner {
+      transform-box: fill-box;
+      transform-origin: center;
+      opacity: 0;
+      animation: popIcon 10s ease-in-out infinite;
+    }
+    @keyframes popIcon {
+      0%   { opacity: 0; transform: scale(0.2); }
+      8%   { opacity: 1; transform: scale(1.25); }
+      14%  { opacity: 1; transform: scale(1); }
+      88%  { opacity: 1; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    #heatBanner .tooltip {
+      opacity: 0;
+      transform-box: fill-box;
+      transform-origin: center;
+      transform: translateY(6px) scale(0.85);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      pointer-events: none;
+    }
+    #heatBanner .tooltip-group:hover .tooltip {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    #heatBanner .tooltip-group:hover .icon-inner {
+      animation-play-state: paused;
+      opacity: 1;
+      transform: scale(1.15);
+    }
+    #heatBanner .icon-hit {
+      cursor: pointer;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #heatBanner .heat-face, #heatBanner .glow-pulse, #heatBanner .connector-line, #heatBanner .icon-badge, #heatBanner .icon-inner {
+        animation: none !important;
+      }
+      #heatBanner .icon-inner { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#081815"/>
+      <stop offset="100%" stop-color="#0f2b26"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="35%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#e8482c" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#e8482c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="420" fill="url(#bg)"/>
+  <circle cx="420" cy="160" r="260" fill="url(#glow)" class="glow-pulse"/>
+
+  <!-- faint digital-twin data mesh -->
+  <g stroke="#4fd1a5" stroke-opacity="0.08" stroke-width="1">
+    <line x1="0" y1="0" x2="0" y2="420"/><line x1="60" y1="0" x2="60" y2="420"/><line x1="120" y1="0" x2="120" y2="420"/><line x1="180" y1="0" x2="180" y2="420"/><line x1="240" y1="0" x2="240" y2="420"/><line x1="300" y1="0" x2="300" y2="420"/><line x1="360" y1="0" x2="360" y2="420"/><line x1="420" y1="0" x2="420" y2="420"/><line x1="480" y1="0" x2="480" y2="420"/><line x1="540" y1="0" x2="540" y2="420"/><line x1="600" y1="0" x2="600" y2="420"/><line x1="660" y1="0" x2="660" y2="420"/><line x1="720" y1="0" x2="720" y2="420"/><line x1="780" y1="0" x2="780" y2="420"/><line x1="840" y1="0" x2="840" y2="420"/><line x1="900" y1="0" x2="900" y2="420"/><line x1="960" y1="0" x2="960" y2="420"/><line x1="1020" y1="0" x2="1020" y2="420"/><line x1="1080" y1="0" x2="1080" y2="420"/><line x1="1140" y1="0" x2="1140" y2="420"/>
+    <line x1="0" y1="0" x2="1200" y2="0"/><line x1="0" y1="60" x2="1200" y2="60"/><line x1="0" y1="120" x2="1200" y2="120"/><line x1="0" y1="180" x2="1200" y2="180"/><line x1="0" y1="240" x2="1200" y2="240"/><line x1="0" y1="300" x2="1200" y2="300"/><line x1="0" y1="360" x2="1200" y2="360"/>
+  </g>
+
+  <!-- city -->
+  <g>
+    <polygon points="300.0,37.0 346.0,60.0 300.0,83.0 254.0,60.0" fill="#173a33" stroke="#1e4a43" stroke-width="0.5"/>
+<polygon points="116.0,129.0 162.0,152.0 116.0,175.0 70.0,152.0" fill="#173a33" stroke="#1e4a43" stroke-width="0.5"/>
+<polygon points="530.0,152.0 576.0,175.0 530.0,198.0 484.0,175.0" fill="#173a33" stroke="#1e4a43" stroke-width="0.5"/>
+<polygon points="346.0,198.0 392.0,221.0 346.0,244.0 300.0,221.0" fill="#2f7fb0" stroke="#1e4a43" stroke-width="0.5" fill-opacity="0.85"/>
+<polygon points="392.0,221.0 438.0,244.0 392.0,267.0 346.0,244.0" fill="#173a33" stroke="#1e4a43" stroke-width="0.5"/>
+<polygon points="300.0,221.0 346.0,244.0 300.0,267.0 254.0,244.0" fill="#173a33" stroke="#1e4a43" stroke-width="0.5"/>
+<polygon points="346.0,244.0 392.0,267.0 346.0,290.0 300.0,267.0" fill="#2f7fb0" stroke="#1e4a43" stroke-width="0.5" fill-opacity="0.85"/>
+<polygon points="300.0,67.0 346.0,90.0 346.0,106.0 300.0,83.0" fill="rgb(81,145,72)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="346.0,90.0 392.0,67.0 392.0,83.0 346.0,106.0" fill="rgb(61,110,55)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="346.0,44.0 392.0,67.0 346.0,90.0 300.0,67.0" fill="rgb(117,209,104)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<polygon points="208.0,67.0 254.0,90.0 254.0,106.0 208.0,83.0" fill="rgb(81,145,72)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="254.0,90.0 300.0,67.0 300.0,83.0 254.0,106.0" fill="rgb(61,110,55)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="254.0,44.0 300.0,67.0 254.0,90.0 208.0,67.0" fill="rgb(117,209,104)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<polygon points="346.0,74.0 392.0,97.0 392.0,129.0 346.0,106.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="392.0,97.0 438.0,74.0 438.0,106.0 392.0,129.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="392.0,51.0 438.0,74.0 392.0,97.0 346.0,74.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="412.7" cy="96.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="96.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="254.0,74.0 300.0,97.0 300.0,129.0 254.0,106.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="300.0,97.0 346.0,74.0 346.0,106.0 300.0,129.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="300.0,51.0 346.0,74.0 300.0,97.0 254.0,74.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="320.7" cy="96.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="96.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="162.0,74.0 208.0,97.0 208.0,129.0 162.0,106.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="208.0,97.0 254.0,74.0 254.0,106.0 208.0,129.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="208.0,51.0 254.0,74.0 208.0,97.0 162.0,74.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="228.7" cy="96.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="187.3" cy="96.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="392.0,81.0 438.0,104.0 438.0,152.0 392.0,129.0" fill="rgb(159,161,46)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="438.0,104.0 484.0,81.0 484.0,129.0 438.0,152.0" fill="rgb(120,122,35)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="438.0,58.0 484.0,81.0 438.0,104.0 392.0,81.0" fill="rgb(229,231,66)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="458.7" cy="119.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="417.3" cy="119.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="458.7" cy="103.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="417.3" cy="103.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="300.0,65.0 346.0,88.0 346.0,152.0 300.0,129.0" fill="rgb(209,162,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="346.0,88.0 392.0,65.0 392.0,129.0 346.0,152.0" fill="rgb(158,122,33)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="346.0,42.0 392.0,65.0 346.0,88.0 300.0,65.0" fill="rgb(255,232,63)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="366.7" cy="119.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="119.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="103.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="103.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="87.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="87.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="208.0,81.0 254.0,104.0 254.0,152.0 208.0,129.0" fill="rgb(159,161,46)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="254.0,104.0 300.0,81.0 300.0,129.0 254.0,152.0" fill="rgb(120,122,35)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="254.0,58.0 300.0,81.0 254.0,104.0 208.0,81.0" fill="rgb(229,231,66)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="274.7" cy="119.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="233.3" cy="119.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="274.7" cy="103.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="233.3" cy="103.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="116.0,113.0 162.0,136.0 162.0,152.0 116.0,129.0" fill="rgb(81,145,72)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="162.0,136.0 208.0,113.0 208.0,129.0 162.0,152.0" fill="rgb(61,110,55)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="162.0,90.0 208.0,113.0 162.0,136.0 116.0,113.0" fill="rgb(117,209,104)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<polygon points="438.0,120.0 484.0,143.0 484.0,175.0 438.0,152.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="484.0,143.0 530.0,120.0 530.0,152.0 484.0,175.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="484.0,97.0 530.0,120.0 484.0,143.0 438.0,120.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="504.7" cy="142.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="463.3" cy="142.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="346.0,72.0 392.0,95.0 392.0,175.0 346.0,152.0" fill="rgb(209,124,52)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="392.0,95.0 438.0,72.0 438.0,152.0 392.0,175.0" fill="rgb(158,94,39)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="392.0,49.0 438.0,72.0 392.0,95.0 346.0,72.0" fill="rgb(255,178,74)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="412.7" cy="142.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="142.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="412.7" cy="126.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="126.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="412.7" cy="110.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="110.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="412.7" cy="94.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="94.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon class="heat-face" points="254.0,56.0 300.0,79.0 300.0,175.0 254.0,152.0" fill="rgb(201,91,47)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="300.0,79.0 346.0,56.0 346.0,152.0 300.0,175.0" fill="rgb(152,69,35)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="300.0,33.0 346.0,56.0 300.0,79.0 254.0,56.0" fill="rgb(255,131,67)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="320.7" cy="142.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="142.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="320.7" cy="126.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="126.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="320.7" cy="110.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="110.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="320.7" cy="94.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="94.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="320.7" cy="78.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="78.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="162.0,120.0 208.0,143.0 208.0,175.0 162.0,152.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="208.0,143.0 254.0,120.0 254.0,152.0 208.0,175.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="208.0,97.0 254.0,120.0 208.0,143.0 162.0,120.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="228.7" cy="142.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="187.3" cy="142.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="392.0,127.0 438.0,150.0 438.0,198.0 392.0,175.0" fill="rgb(159,161,46)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="438.0,150.0 484.0,127.0 484.0,175.0 438.0,198.0" fill="rgb(120,122,35)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="438.0,104.0 484.0,127.0 438.0,150.0 392.0,127.0" fill="rgb(229,231,66)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="458.7" cy="165.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="417.3" cy="165.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="458.7" cy="149.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="417.3" cy="149.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon class="heat-face" points="300.0,63.0 346.0,86.0 346.0,198.0 300.0,175.0" fill="rgb(190,59,36)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="346.0,86.0 392.0,63.0 392.0,175.0 346.0,198.0" fill="rgb(144,45,27)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="346.0,40.0 392.0,63.0 346.0,86.0 300.0,63.0" fill="rgb(255,85,52)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="366.7" cy="165.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="165.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="149.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="149.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="133.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="133.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="117.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="117.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="101.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="101.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="85.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="85.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="208.0,111.0 254.0,134.0 254.0,198.0 208.0,175.0" fill="rgb(209,162,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="254.0,134.0 300.0,111.0 300.0,175.0 254.0,198.0" fill="rgb(158,122,33)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="254.0,88.0 300.0,111.0 254.0,134.0 208.0,111.0" fill="rgb(255,232,63)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="274.7" cy="165.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="233.3" cy="165.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="274.7" cy="149.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="233.3" cy="149.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="274.7" cy="133.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="233.3" cy="133.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="116.0,159.0 162.0,182.0 162.0,198.0 116.0,175.0" fill="rgb(81,145,72)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="162.0,182.0 208.0,159.0 208.0,175.0 162.0,198.0" fill="rgb(61,110,55)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="162.0,136.0 208.0,159.0 162.0,182.0 116.0,159.0" fill="rgb(117,209,104)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<polygon points="438.0,182.0 484.0,205.0 484.0,221.0 438.0,198.0" fill="rgb(81,145,72)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="484.0,205.0 530.0,182.0 530.0,198.0 484.0,221.0" fill="rgb(61,110,55)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="484.0,159.0 530.0,182.0 484.0,205.0 438.0,182.0" fill="rgb(117,209,104)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<polygon points="346.0,134.0 392.0,157.0 392.0,221.0 346.0,198.0" fill="rgb(209,162,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="392.0,157.0 438.0,134.0 438.0,198.0 392.0,221.0" fill="rgb(158,122,33)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="392.0,111.0 438.0,134.0 392.0,157.0 346.0,134.0" fill="rgb(255,232,63)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="412.7" cy="188.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="188.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="412.7" cy="172.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="172.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="412.7" cy="156.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="371.3" cy="156.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="254.0,118.0 300.0,141.0 300.0,221.0 254.0,198.0" fill="rgb(209,124,52)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="300.0,141.0 346.0,118.0 346.0,198.0 300.0,221.0" fill="rgb(158,94,39)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="300.0,95.0 346.0,118.0 300.0,141.0 254.0,118.0" fill="rgb(255,178,74)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="320.7" cy="188.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="188.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="320.7" cy="172.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="172.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="320.7" cy="156.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="156.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="320.7" cy="140.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="279.3" cy="140.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="162.0,166.0 208.0,189.0 208.0,221.0 162.0,198.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="208.0,189.0 254.0,166.0 254.0,198.0 208.0,221.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="208.0,143.0 254.0,166.0 208.0,189.0 162.0,166.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="228.7" cy="188.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="187.3" cy="188.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="392.0,189.0 438.0,212.0 438.0,244.0 392.0,221.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="438.0,212.0 484.0,189.0 484.0,221.0 438.0,244.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="438.0,166.0 484.0,189.0 438.0,212.0 392.0,189.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="458.7" cy="211.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="417.3" cy="211.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="300.0,173.0 346.0,196.0 346.0,244.0 300.0,221.0" fill="rgb(159,161,46)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="346.0,196.0 392.0,173.0 392.0,221.0 346.0,244.0" fill="rgb(120,122,35)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon class="heat-face" points="346.0,150.0 392.0,173.0 346.0,196.0 300.0,173.0" fill="rgb(229,231,66)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="366.7" cy="211.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="211.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="366.7" cy="195.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="325.3" cy="195.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<polygon points="208.0,189.0 254.0,212.0 254.0,244.0 208.0,221.0" fill="rgb(112,153,57)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="254.0,212.0 300.0,189.0 300.0,221.0 254.0,244.0" fill="rgb(85,116,43)" stroke="rgba(0,0,0,0.25)" stroke-width="0.5"/>
+<polygon points="254.0,166.0 300.0,189.0 254.0,212.0 208.0,189.0" fill="rgb(162,221,81)" stroke="rgba(0,0,0,0.15)" stroke-width="0.5"/>
+<circle cx="274.7" cy="211.9" r="1.3" fill="rgba(255,255,255,0.35)"/>
+<circle cx="233.3" cy="211.9" r="1.3" fill="rgba(255,255,255,0.18)"/>
+<circle cx="392.0" cy="238.0" r="7" fill="#3da86b" opacity="0.9"/>
+<rect x="390.5" y="242.0" width="3" height="6" fill="#5a3d2b"/>
+<circle cx="300.0" cy="238.0" r="7" fill="#3da86b" opacity="0.9"/>
+<rect x="298.5" y="242.0" width="3" height="6" fill="#5a3d2b"/>
+<circle cx="116.0" cy="146.0" r="7" fill="#3da86b" opacity="0.9"/>
+<rect x="114.5" y="150.0" width="3" height="6" fill="#5a3d2b"/>
+<circle cx="162.0" cy="169.0" r="7" fill="#3da86b" opacity="0.9"/>
+<rect x="160.5" y="173.0" width="3" height="6" fill="#5a3d2b"/>
+<circle cx="438.0" cy="215.0" r="7" fill="#3da86b" opacity="0.9"/>
+<rect x="436.5" y="219.0" width="3" height="6" fill="#5a3d2b"/>
+  </g>
+
+  
+    <line x1="120" y1="100" x2="255" y2="130" stroke="#4fd1a5" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3,4" class="connector-line"/>
+    <g class="tooltip-group">
+    <circle cx="120" cy="100" r="30" fill="#0f2b26" stroke="#1e4a43" stroke-width="1.5" class="icon-badge" style="animation-delay:0s"/>
+    
+      <g transform="translate(120,100)">
+      <g class="icon-inner" style="animation-delay:0s">
+        <rect x="-4" y="-22" width="8" height="34" rx="4" fill="#0a1f1c" stroke="#e8482c" stroke-width="1.5"/>
+        <circle cx="0" cy="16" r="9" fill="#e8482c"/>
+        <rect x="-2.5" y="-16" width="5" height="26" rx="2.5" fill="#e8482c"/>
+      </g>
+      </g>
+      <circle class="icon-hit" cx="120" cy="100" r="34" fill="transparent"/>
+      <g class="tooltip" transform="translate(120,48)">
+        <rect x="-78" y="-16" width="156" height="30" rx="7" fill="#0f2b26" stroke="#4fd1a5" stroke-width="1"/>
+        <text x="0" y="4" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="#e7fff5">Land Surface Temperature</text>
+      </g>
+    </g>
+  
+    <line x1="760" y1="90" x2="560" y2="130" stroke="#4fd1a5" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3,4" class="connector-line"/>
+    <g class="tooltip-group">
+    <circle cx="760" cy="90" r="30" fill="#0f2b26" stroke="#1e4a43" stroke-width="1.5" class="icon-badge" style="animation-delay:2.5s"/>
+    
+      <g transform="translate(760,90)">
+      <g class="icon-inner" style="animation-delay:2.5s">
+        <path d="M -14 12 C -14 -10, 10 -18, 16 -16 C 18 -8, 8 14, -14 12 Z" fill="#3da86b"/>
+        <path d="M -12 10 C -4 0, 4 -6, 14 -15" stroke="#173a33" stroke-width="1.2" fill="none"/>
+      </g>
+      </g>
+      <circle class="icon-hit" cx="760" cy="90" r="34" fill="transparent"/>
+      <g class="tooltip" transform="translate(760,38)">
+        <rect x="-78" y="-16" width="156" height="30" rx="7" fill="#0f2b26" stroke="#4fd1a5" stroke-width="1"/>
+        <text x="0" y="4" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="#e7fff5">Vegetation &amp; Green Cover</text>
+      </g>
+    </g>
+  
+    <line x1="800" y1="260" x2="600" y2="260" stroke="#4fd1a5" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3,4" class="connector-line"/>
+    <g class="tooltip-group">
+    <circle cx="800" cy="260" r="30" fill="#0f2b26" stroke="#1e4a43" stroke-width="1.5" class="icon-badge" style="animation-delay:5s"/>
+    
+      <g transform="translate(800,260)">
+      <g class="icon-inner" style="animation-delay:5s">
+        <path d="M 0 -18 C 10 -4, 14 6, 8 14 C 2 22, -12 20, -13 8 C -14 -2, -6 -10, 0 -18 Z" fill="#2f9fd8"/>
+      </g>
+      </g>
+      <circle class="icon-hit" cx="800" cy="260" r="34" fill="transparent"/>
+      <g class="tooltip" transform="translate(800,208)">
+        <rect x="-78" y="-16" width="156" height="30" rx="7" fill="#0f2b26" stroke="#4fd1a5" stroke-width="1"/>
+        <text x="0" y="4" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="#e7fff5">Water Bodies &amp; Drainage</text>
+      </g>
+    </g>
+  
+    <line x1="150" y1="300" x2="280" y2="280" stroke="#4fd1a5" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3,4" class="connector-line"/>
+    <g class="tooltip-group">
+    <circle cx="150" cy="300" r="30" fill="#0f2b26" stroke="#1e4a43" stroke-width="1.5" class="icon-badge" style="animation-delay:7.5s"/>
+    
+      <g transform="translate(150,300)">
+      <g class="icon-inner" style="animation-delay:7.5s">
+        <rect x="-14" y="0" width="7" height="16" fill="#4fd1a5"/>
+        <rect x="-4" y="-8" width="7" height="24" fill="#4fd1a5"/>
+        <rect x="6" y="-16" width="7" height="32" fill="#4fd1a5"/>
+      </g>
+      </g>
+      <circle class="icon-hit" cx="150" cy="300" r="34" fill="transparent"/>
+      <g class="tooltip" transform="translate(150,248)">
+        <rect x="-78" y="-16" width="156" height="30" rx="7" fill="#0f2b26" stroke="#4fd1a5" stroke-width="1"/>
+        <text x="0" y="4" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" fill="#e7fff5">Digital Twin Analytics</text>
+      </g>
+    </g>
+
+  <text x="600" y="400" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" letter-spacing="3" fill="#4fd1a5" font-weight="700">URBAN HEAT MAPPING &#183; DIGITAL TWIN MODELING</text>
+</svg>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="section container">
+    <h2><span class="num">01</span> About</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I started out doing fieldwork for Environmental Impact Assessments in Bangladesh, collecting water samples,
+          running focus group discussions with people whose land sat in the path of a new railway line, and writing
+          the reports that decide whether a project gets its environmental clearance. Over six years that turned into
+          leading EIA/ESIA studies for some of the country's largest donor-funded infrastructure programs, from the
+          Dhaka BRT corridor to gas pipeline expansions and railway conversions under the ADB and JICA.
+        </p>
+        <p>
+          In 2025 I moved to Enschede to start an MSc in Spatial Engineering at the University of Twente's ITC
+          faculty. I'm building on the fieldwork and impact-assessment background with formal training in GIS,
+          remote sensing, and disaster risk modeling: tools I was reaching for informally on projects like the
+          Sandwip Island morphological assessment and the coastal afforestation study I published in 2024. My
+          current coursework centers on urban heat island analysis and digital twin modeling for the built
+          environment.
+        </p>
+        <p>
+          Outside of coursework, I'm currently President of Orbit, the ITC student association at the University of
+          Twente, which keeps me in the same kind of coordination-and-people-management role I had running field
+          survey teams back in Dhaka.
+        </p>
+      </div>
+      <div class="about-facts">
+        <div class="fact"><span class="fact-num">6</span><span class="fact-label">years in environmental &amp; EIA consulting</span></div>
+        <div class="fact"><span class="fact-num">40+</span><span class="fact-label">EIA / ESIA / feasibility studies</span></div>
+        <div class="fact"><span class="fact-num">3</span><span class="fact-label">peer-reviewed publications</span></div>
+        <div class="fact"><span class="fact-num">5</span><span class="fact-label">journals reviewed for</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section container">
+    <h2><span class="num">02</span> Experience</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-when">Jun 2024–Present</div>
+        <div class="timeline-content">
+          <h3>Environmental Specialist</h3>
+          <p class="timeline-org">Environment and Resource Analysis Centre (ENRAC)</p>
+          <ul>
+            <li>Lead environmental specialist on ADB- and JICA-funded railway and highway EIA studies, including the Bhairab Bazar–Mymensingh and Jessore–Benapole rail conversions and the Chattogram–Cox's Bazar highway upgrade.</li>
+            <li>Prepare EIA/EMP/EMoP reports, environmental categorization reports, and monitoring budgets; run public consultations and feed community feedback back into project design.</li>
+            <li>Liaise directly with the Department of Environment to secure Environmental Clearance Certificates (ECC).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-when">Jan 2024–Jun 2024</div>
+        <div class="timeline-content">
+          <h3>Environmental Expert (Individual Consultant)</h3>
+          <p class="timeline-org">New Vision Solutions Ltd.</p>
+          <ul>
+            <li>Prepared the IEE and ESIA for a JICA-funded Treatment Storage and Disposal Facility (TSDF) for the ship-recycling industry in Chattogram.</li>
+            <li>Coordinated field surveys, KII/FGD sessions, and stakeholder consultation directly with the JICA environmental expert team.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-when">Sep 2019–Jan 2024</div>
+        <div class="timeline-content">
+          <h3>Junior Engineer (Environment) → Project Coordinator</h3>
+          <p class="timeline-org">Onushandhani Creeds Ltd. (O.CREEDS)</p>
+          <ul>
+            <li>Delivered 30+ EIA, ESIA, IEE, and feasibility studies across sectors: roads and highways (RHD), water supply and sewerage master plans, airport development, gas pipelines, and industrial zones.</li>
+            <li>Notable assignments: EIA for Shah Amanat International Airport Development; feasibility study for the Mujib International Convention Center; Dhaka BRT Operational Phase ESMF; Coastal Embankment Improvement Project Phase-II.</li>
+            <li>Coordinated primary and secondary data collection, KII/FGD facilitation, and field survey teams; trained enumerators on ODK-based digital data collection.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section container">
+    <h2><span class="num">03</span> Featured Projects</h2>
+    <p class="section-lede">A sample of the 40+ environmental assessments and feasibility studies completed since 2019, spanning ADB, JICA, World Bank, and AIIB-funded infrastructure across Bangladesh. <a href="projects.html">Browse the full project archive →</a></p>
+    <div class="project-grid">
+
+      <article class="project-card">
+        <span class="project-tag">EIA · Railway</span>
+        <h3>Railway Connectivity Improvement Preparatory Facility (RCIPF)</h3>
+        <p>EIA and environmental survey across four sub-projects of Bangladesh Railway (SP5, SP7, SP8, SP9), covering new broad-gauge lines, MG-to-DG conversions, and rolling-stock facility redesign.</p>
+        <p class="project-meta">Client: JV of OCG, EGIS &amp; HSS, ADB funded</p>
+      </article>
+
+      <article class="project-card">
+        <span class="project-tag">ESIA · Industrial</span>
+        <h3>Ship Recycling Industry TSDF, Chattogram</h3>
+        <p>ESIA for a Treatment Storage and Disposal Facility serving the ship-recycling industry, including stakeholder consultation coordinated directly with JICA's environmental expert team.</p>
+        <p class="project-meta">Client: New Vision Solutions Ltd., JICA funded</p>
+      </article>
+
+      <article class="project-card">
+        <span class="project-tag">EIA · Aviation</span>
+        <h3>Shah Amanat International Airport Development</h3>
+        <p>Primary and secondary data collection, field survey coordination, and EIA report preparation for the airport's development project.</p>
+        <p class="project-meta">Client: Civil Aviation Authority of Bangladesh</p>
+      </article>
+
+      <article class="project-card">
+        <span class="project-tag">Feasibility · Gas</span>
+        <h3>Gas Sector Energy Efficiency Improvement Project</h3>
+        <p>Environmental and social assessment and mitigation measures, including Environmental and Social Code of Practice preparation and monitoring reporting.</p>
+        <p class="project-meta">Client: Bakhrabad Gas Distribution Company Ltd., AIIB funded</p>
+      </article>
+
+      <article class="project-card">
+        <span class="project-tag">ESIA · Urban Transport</span>
+        <h3>Dhaka BRT Project: Operational Phase</h3>
+        <p>Environmental and Social Management Framework development for Bangladesh's first Bus Rapid Transit corridor.</p>
+        <p class="project-meta">Client: INSUCO, ADB funded</p>
+      </article>
+
+      <article class="project-card">
+        <span class="project-tag">Research · Coastal GIS</span>
+        <h3>Morphological Assessment of Sandwip Island</h3>
+        <p>GIS and remote sensing-based analysis of coastal morphological change, presented at ICCESD 2024: the fieldwork that pointed me toward formal geospatial training.</p>
+        <p class="project-meta"><a href="https://www.researchgate.net/publication/378877398_MORPHOLOGICAL_ASSESSMENT_OF_SANDWIP_ISLAND_USING_GIS_AND_REMOTE_SENSING_TECHNOLOGY" target="_blank" rel="noopener">Read on ResearchGate ↗</a></p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- RESEARCH / PUBLICATIONS -->
+  <section id="research" class="section container">
+    <h2><span class="num">04</span> Publications &amp; Research</h2>
+
+    <div class="research-block">
+      <h3>Journal Article</h3>
+      <p>Khalil, I. B., Tonmoy, S. A., Morsad, G., &amp; Sharmin, S. (2024). <em>Climate-Resilient Social Afforestation in Sandwip: A Community-Driven Initiative to Mitigate Coastal Disaster Vulnerability.</em> Journal of Water Resource Research and Development, 7(3), 41–56. <a href="https://doi.org/10.5281/zenodo.13917425" target="_blank" rel="noopener">doi.org/10.5281/zenodo.13917425 ↗</a></p>
+    </div>
+
+    <div class="research-block">
+      <h3>Conference Proceedings: ICCESD 2024</h3>
+      <ul>
+        <li>Khalil, I. B., Azad, M., &amp; Madani, M. A.-U.-Z. <em>Morphological Assessment of Sandwip Island Using GIS and Remote Sensing Technology.</em> 7th ICCESD, KUET, Khulna. <a href="https://www.researchgate.net/publication/378877398_MORPHOLOGICAL_ASSESSMENT_OF_SANDWIP_ISLAND_USING_GIS_AND_REMOTE_SENSING_TECHNOLOGY" target="_blank" rel="noopener">↗</a></li>
+        <li>Khalil, I. B., Madani, M. A.-U.-Z., &amp; Rahman, J. N. <em>Hybrid Constructed Wetlands: A Sustainable Solution for Treating Raw Water Using Recycled Concrete Waste Media to Achieve SDGs.</em> 7th ICCESD, KUET, Khulna. <a href="https://www.researchgate.net/publication/378857908_CONSTRUCTED_WETLANDS_A_SUSTAINABLE_SOLUTION_FOR_TREATING_RAW_WATER_USING_RECYCLED_CONCRETE_WASTE_MEDIA_TO_ACHIEVE_SDGS" target="_blank" rel="noopener">↗</a></li>
+        <li>Ali, R., Hossain, S., Khalil, I. B., &amp; Mollick, A. R. (2020). <em>Integrated Solid Waste Management Master Plan for Narayanganj City Corporation of Bangladesh.</em> ICBEN-4, Abstract 33. <a href="https://ben-global.net/wp-content/uploads/2020/12/Final-Abstracts-of-ICBEN-4_27-Dec-1.56-am_final.pdf" target="_blank" rel="noopener">↗</a></li>
+      </ul>
+    </div>
+
+    <div class="research-block">
+      <h3>B.Sc. Thesis</h3>
+      <p><em>Assessment of Escherichia Coli Removal Efficiency of Buriganga River Using a Hybrid Constructed Wetland System.</em> Ahsanullah University of Science and Technology, 2019.</p>
+    </div>
+
+    <div class="research-block">
+      <h3>Peer Review</h3>
+      <p>Reviewed manuscripts for the <a href="https://journaljerr.com/" target="_blank" rel="noopener">Journal of Engineering Research and Reports</a>, <a href="https://journalijecc.com/index.php/IJECC" target="_blank" rel="noopener">International Journal of Environment and Climate Change</a>, <a href="https://journalajee.com/" target="_blank" rel="noopener">Asian Journal of Environment and Ecology</a>, <a href="https://journalajraf.com/" target="_blank" rel="noopener">Asian Journal of Research in Agriculture and Forestry</a>, and the book <a href="https://www.bookpi.org/bookstore/product/geography-earth-science-and-environment-research-highlights-vol-1/" target="_blank" rel="noopener"><em>Geography, Earth Science and Environment: Research Highlights</em></a>.</p>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section container">
+    <h2><span class="num">05</span> Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-when">2025–2027 <span class="badge">Ongoing</span></div>
+        <div class="timeline-content">
+          <h3>MSc in Spatial Engineering</h3>
+          <p class="timeline-org">University of Twente, Faculty of Geo-Information Science and Earth Observation (ITC), Netherlands</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-when">2015–2019</div>
+        <div class="timeline-content">
+          <h3>B.Sc. in Civil Engineering</h3>
+          <p class="timeline-org">Ahsanullah University of Science and Technology (AUST), Bangladesh, CGPA 3.05/4.00</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-when">2012–2014</div>
+        <div class="timeline-content">
+          <h3>Higher Secondary Certificate</h3>
+          <p class="timeline-org">Dhaka City College, Bangladesh</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section container">
+    <h2><span class="num">06</span> Skills &amp; Training</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Environmental Assessment</h3>
+        <p>EIA / ESIA / IEE report preparation, EMP &amp; EMoP development, Environmental &amp; Social Code of Practice, ECC guidance, environmental categorization</p>
+      </div>
+      <div class="skill-group">
+        <h3>GIS &amp; Field Data</h3>
+        <p>ArcGIS, SuperMap, remote sensing analysis, ODK digital surveys, KII/FGD facilitation, field survey coordination</p>
+      </div>
+      <div class="skill-group">
+        <h3>Geospatial &amp; Programming <span class="skill-note">(MSc coursework)</span></h3>
+        <p>Python, C++, QGIS, Google Earth Engine, and FME, building toward urban heat and digital twin modeling</p>
+      </div>
+      <div class="skill-group">
+        <h3>Engineering Software</h3>
+        <p>AutoCAD (2D &amp; 3D), ETABS, MS Office</p>
+      </div>
+      <div class="skill-group">
+        <h3>Design &amp; Media</h3>
+        <p>Adobe Photoshop, Adobe Illustrator, Canva, CapCut, InShot</p>
+      </div>
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <p>Bengali (native) · English (fluent, IELTS 6.5) · Dutch (A1, learning)</p>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">Certifications &amp; Training</h3>
+    <div class="training-grid">
+      <div class="training-card">
+        <span class="training-year">2024</span>
+        <h4>Environmental &amp; Social Impact Assessment</h4>
+        <p class="training-provider"><a href="https://bwged.blogspot.com/" target="_blank" rel="noopener">Clean &amp; BWGED</a></p>
+      </div>
+      <div class="training-card">
+        <span class="training-year">2023</span>
+        <h4>Environmental Modeling and ESIA</h4>
+        <p class="training-provider"><a href="https://www.iwmbd.org/" target="_blank" rel="noopener">IWM</a></p>
+      </div>
+      <div class="training-card">
+        <span class="training-year">2023</span>
+        <h4>Energy Environment of Bangladesh</h4>
+        <p class="training-provider"><a href="https://bwged.blogspot.com/" target="_blank" rel="noopener">Clean &amp; BWGED</a></p>
+      </div>
+      <div class="training-card">
+        <span class="training-year">2023</span>
+        <h4>Urban Tree Inventory Using i-Tree</h4>
+        <p class="training-provider"><a href="https://usfsbd.org/compass-overview-755851" target="_blank" rel="noopener">Compass, US Forest Service</a></p>
+      </div>
+      <div class="training-card">
+        <span class="training-year">SDG</span>
+        <h4>Environmental SDG Indicators: Measuring the Environment &amp; Linkage Between FDES, SEEA and the SDGs</h4>
+        <p class="training-provider"><a href="https://www.unsdglearn.org/courses/environmental-sdg-indicators/" target="_blank" rel="noopener">UN SDG Learn</a></p>
+      </div>
+      <div class="training-card">
+        <span class="training-year">GIS</span>
+        <h4>GIS for Civil Engineering Applications</h4>
+        <p class="training-provider">SuperMap</p>
+      </div>
+      <div class="training-card">
+        <span class="training-year">2019</span>
+        <h4>Professional AutoCAD Mastercourse</h4>
+        <p class="training-provider"><a href="https://caddcore.net/" target="_blank" rel="noopener">CADD CORE</a></p>
+      </div>
+      <div class="training-card">
+        <span class="training-year">2018</span>
+        <h4>Professional Graphics Design Training</h4>
+        <p class="training-provider"><a href="https://www.facebook.com/srinstituteofdesign/" target="_blank" rel="noopener">SR Institute of Design</a></p>
+      </div>
+      <div class="training-card">
+        <span class="training-year">2018</span>
+        <h4>Practical SEO Training</h4>
+        <p class="training-provider"><a href="https://www.bitm.org.bd/course-details/224/complete-practical-seo" target="_blank" rel="noopener">BITM</a></p>
+      </div>
+    </div>
+    <p class="membership-line">Member, <a href="https://www.iebbd.org/" target="_blank" rel="noopener">Institution of Engineers Bangladesh (IEB)</a></p>
+  </section>
+
+  <!-- LEADERSHIP & ACTIVITIES -->
+  <section id="activities" class="section container">
+    <h2><span class="num">07</span> Leadership &amp; Activities</h2>
+    <div class="research-block">
+      <ul>
+        <li><strong>President</strong>, <a href="https://www.itc.nl/education/student-life/orbit-association-of-ITC-students/" target="_blank" rel="noopener">Orbit, Association of ITC Students</a>, University of Twente (2026–2027)</li>
+        <li><strong>Joint Secretary</strong>, <a href="https://aust.edu/austidc" target="_blank" rel="noopener">AUST Innovation and Design Club</a> (2018–2019)</li>
+        <li><strong>Organizer, Truss Challenge</strong>, <a href="https://www.youtube.com/channel/UCPG7t9ybz34kDyZn--7U_6A" target="_blank" rel="noopener">Mind Sparks '19</a>, an inter-university tech/biz competition with IIT Roorkee, India</li>
+        <li><strong>Organizer &amp; Representative</strong>, <a href="https://www.thedailystar.net/business/bangladesh-youthfest-2017-kicks-tomorrow-1367575" target="_blank" rel="noopener">Youth Fest</a> (2017)</li>
+        <li><strong>Class Representative</strong>, <a href="https://www.aust.edu/ce/departmental_activities/664" target="_blank" rel="noopener">34th Batch, Civil Department, AUST</a> (2015–2017)</li>
+        <li><strong>Head Volunteer</strong>, <a href="https://www.laboratorians.net/" target="_blank" rel="noopener">Old Laboratorians Association (OLsA)</a> (2012–2017)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section container contact-section">
+    <h2><span class="num">08</span> Get in touch</h2>
+    <p class="section-lede">Based in Enschede, Netherlands. Open to conversations on environmental assessment, GIS/remote sensing, and disaster-risk research.</p>
+    <div class="contact-grid">
+      <a href="mailto:Ishraque.cee@gmail.com" class="contact-card">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">Ishraque.cee@gmail.com</span>
+      </a>
+      <a href="https://www.linkedin.com/in/ishraquebk/" target="_blank" rel="noopener" class="contact-card">
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-value">in/ishraquebk</span>
+      </a>
+      <a href="https://www.researchgate.net/profile/Ishraque-Khalil" target="_blank" rel="noopener" class="contact-card">
+        <span class="contact-label">ResearchGate</span>
+        <span class="contact-value">Ishraque-Khalil</span>
+      </a>
+      <a href="https://github.com/IBK015" target="_blank" rel="noopener" class="contact-card">
+        <span class="contact-label">GitHub</span>
+        <span class="contact-value">@IBK015</span>
+      </a>
+      <a href="assets/cv/Ishraque_Bin_Khalil_CV_Netherlands.pdf" target="_blank" rel="noopener" class="contact-card">
+        <span class="contact-label">Resume</span>
+        <span class="contact-value">Netherlands CV (PDF)</span>
+      </a>
+      <a href="assets/cv/Ishraque_Bin_Khalil_CV_Bangladesh.pdf" target="_blank" rel="noopener" class="contact-card">
+        <span class="contact-label">Resume</span>
+        <span class="contact-value">Bangladesh CV (PDF)</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; <span id="year"></span> Ishraque Bin Khalil. Built with plain HTML, CSS &amp; JS.</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
