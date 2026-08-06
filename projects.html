@@ -30,6 +30,13 @@
   .archive-role { color: var(--accent); font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
   .note-box { background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; color: var(--text-dim); font-size: 0.92rem; margin-bottom: 48px; }
   .note-box a { color: var(--accent); }
+  @media (max-width: 680px) {
+    .archive-header { padding: 110px 20px 32px; }
+    .org-block { margin-bottom: 48px; }
+  }
+  @media (max-width: 480px) {
+    .archive-grid { grid-template-columns: 1fr; }
+  }
   @media (prefers-reduced-motion: reduce) {
     .archive-header > * { animation: none !important; opacity: 1 !important; }
     .archive-card { transition: none !important; }
