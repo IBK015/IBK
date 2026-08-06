@@ -11,7 +11,11 @@
 <style>
   .archive-header { padding: 140px 24px 40px; }
   .archive-header h1 { font-size: clamp(2rem, 5vw, 2.8rem); }
-  .back-link { display: inline-block; margin-bottom: 24px; color: var(--text-dim); font-size: 0.9rem; }
+  .archive-header > * { opacity: 0; animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .archive-header > *:nth-child(1) { animation-delay: 0.02s; }
+  .archive-header > *:nth-child(2) { animation-delay: 0.1s; }
+  .archive-header > *:nth-child(3) { animation-delay: 0.18s; }
+  .back-link { display: inline-block; margin-bottom: 24px; color: var(--text-dim); font-size: 0.9rem; transition: color 0.2s ease; }
   .back-link:hover { color: var(--accent); }
   .org-block { margin-bottom: 64px; }
   .org-title { font-size: 1.3rem; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 24px; }
@@ -19,12 +23,17 @@
   .org-title a:hover { text-decoration: underline; }
   .org-meta { color: var(--text-dim); font-size: 0.9rem; margin: -16px 0 24px; }
   .archive-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-  .archive-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+  .archive-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+  .archive-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 14px 26px -16px rgba(0, 0, 0, 0.45); }
   .archive-card h3 { font-size: 0.98rem; margin-bottom: 8px; }
   .archive-card p { color: var(--text-dim); font-size: 0.85rem; margin: 4px 0; }
   .archive-role { color: var(--accent); font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
   .note-box { background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; color: var(--text-dim); font-size: 0.92rem; margin-bottom: 48px; }
   .note-box a { color: var(--accent); }
+  @media (prefers-reduced-motion: reduce) {
+    .archive-header > * { animation: none !important; opacity: 1 !important; }
+    .archive-card { transition: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -53,15 +62,15 @@
 
   <section class="section container" style="border-top:none; padding-top:0;">
 
-    <div class="note-box">
+    <div class="note-box reveal">
       Most of these assignments follow the same lifecycle: primary and secondary field data collection, stakeholder consultation through KIIs and FGDs, impact identification and mitigation planning, and securing Environmental Clearance Certificates from the Department of Environment. Sectors span transport (rail, road, airport), energy (gas pipelines), water/WASH, and industrial development, funded by the ADB, JICA, World Bank, and AIIB.
     </div>
 
     <!-- ENRAC -->
-    <div class="org-block">
+    <div class="org-block reveal">
       <h2 class="org-title"><a href="https://enrac.com.bd/" target="_blank" rel="noopener">Environment and Resource Analysis Centre (ENRAC) ↗</a></h2>
       <p class="org-meta">Environmental Specialist · June 2024 – Present</p>
-      <div class="archive-grid">
+      <div class="archive-grid stagger">
 
         <div class="archive-card">
           <span class="archive-role">Environmental Specialist · Feb 2025–Present</span>
@@ -109,10 +118,10 @@
     </div>
 
     <!-- New Vision -->
-    <div class="org-block">
+    <div class="org-block reveal">
       <h2 class="org-title"><a href="https://newvision-bd.com/" target="_blank" rel="noopener">New Vision Solutions Ltd. ↗</a></h2>
       <p class="org-meta">Environmental Expert (Individual Consultant) · January 2024 – June 2024</p>
-      <div class="archive-grid">
+      <div class="archive-grid stagger">
         <div class="archive-card">
           <span class="archive-role">Environmental Expert</span>
           <h3>Ship Recycling Industry TSDF, Chattogram</h3>
@@ -123,10 +132,10 @@
     </div>
 
     <!-- O.CREEDS -->
-    <div class="org-block">
+    <div class="org-block reveal">
       <h2 class="org-title"><a href="https://ocreeds.com/team" target="_blank" rel="noopener">Onushandhani Creeds Ltd. (O.CREEDS) ↗</a></h2>
       <p class="org-meta">Junior Engineer (Environment) → Project Coordinator · September 2019 – January 2024</p>
-      <div class="archive-grid">
+      <div class="archive-grid stagger">
 
         <div class="archive-card">
           <span class="archive-role">Junior Engineer · Oct 2023–Jan 2024</span>
