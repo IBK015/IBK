@@ -425,7 +425,6 @@ h1, h2, h3, h4 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
-  align-items: start;
 }
 .project-card {
   background: var(--surface);
@@ -447,7 +446,8 @@ h1, h2, h3, h4 {
 /* photo project cards */
 .project-card.has-media {
   padding: 0;
-  display: block;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 .project-card-media {
@@ -455,6 +455,7 @@ h1, h2, h3, h4 {
   aspect-ratio: 4 / 3;
   overflow: hidden;
   background: var(--bg-alt);
+  flex-shrink: 0;
 }
 .project-card-media img {
   width: 100%;
@@ -483,6 +484,20 @@ h1, h2, h3, h4 {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  flex: 1 1 auto;
+}
+.project-card-body h3 {
+  min-height: 2.5rem;
+}
+.project-card-body p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.55;
+}
+.project-card-body .project-meta {
+  margin-top: auto;
 }
 .project-tag {
   align-self: flex-start;
