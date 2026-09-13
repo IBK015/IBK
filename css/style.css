@@ -424,6 +424,7 @@ h1, h2, h3, h4 {
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-auto-rows: 1fr;
   gap: 24px;
 }
 .project-card {
@@ -485,6 +486,8 @@ h1, h2, h3, h4 {
   flex-direction: column;
   gap: 10px;
   flex: 1 1 auto;
+  min-height: 218px;
+  box-sizing: border-box;
 }
 .project-card-body h3 {
   min-height: 2.5rem;
@@ -495,6 +498,7 @@ h1, h2, h3, h4 {
   -webkit-box-orient: vertical;
   overflow: hidden;
   line-height: 1.55;
+  min-height: calc(1.55em * 3);
 }
 .project-card-body .project-meta {
   margin-top: auto;
