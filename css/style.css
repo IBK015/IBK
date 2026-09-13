@@ -469,10 +469,14 @@ h1, h2, h3, h4 {
   inset: 0;
   background: linear-gradient(180deg, transparent 55%, rgba(10, 31, 28, 0.55) 100%);
   pointer-events: none;
+  transition: opacity 0.4s ease;
 }
 .project-card.has-media:hover .project-card-media img {
   transform: scale(1.07);
   filter: saturate(1.08);
+}
+.project-card.has-media:hover .project-card-media::after {
+  opacity: 0.7;
 }
 .project-card-body {
   padding: 22px 26px 26px;
@@ -490,6 +494,22 @@ h1, h2, h3, h4 {
   text-transform: uppercase;
   padding: 4px 10px;
   border-radius: 999px;
+}
+.project-card-media .project-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 1;
+  background: rgba(10, 31, 28, 0.55);
+  border: 1px solid rgba(231, 243, 239, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--text);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+}
+.project-card.has-media:hover .project-card-media .project-tag {
+  transform: translateY(-2px);
+  background: rgba(10, 31, 28, 0.75);
 }
 .project-card h3 { font-size: 1.05rem; }
 .project-card p { color: var(--text-dim); font-size: 0.92rem; margin: 0; }
