@@ -42,7 +42,7 @@ export function createTwin(opts){
   const sun=new THREE.DirectionalLight(0xcfe6ff,2);scene.add(sun);
 
   const S={p:0,B:0,step:0,layer:'neutral',user:null,exploring:false,R:600,visible:true,tgtMode:'neutral',pts:0,t0:performance.now(),last:performance.now(),cs:{a:.3,r:1.3,h:.66},data:null};
-  let W=1,H=1,world=null,labels=[],hoverMesh=null,hoverIdx=-1,selIdx=-1,colorAnim=0,pending=null;
+  let W=1,H=1,world=null,labels=[],hoverMesh=null,hoverIdx=-1,selIdx=-1,colorAnim=0,animT=0,pending=null;
   const uni={uRise:{value:0},uScanX:{value:-1e6},uSize:{value:2.4},uScale:{value:500},uOpacity:{value:1},uR:{value:600}};
 
   function dispose(){
@@ -64,7 +64,8 @@ export function createTwin(opts){
     const bp=[],bn=[],bd=[],ranges=[],ep=[],ed=[],pts=[];let tv=0;
     const rnd=(()=>{let s=11;return()=>(s=(s*16807)%2147483647)/2147483647})();
     bs.forEach((b,idx)=>{
-      const r=b.r,P=[];for(let i=0;i<r.length;i+=2)P.push(new THREE.Vector2(r[i],r[i+1]));
+      const r=b.r,P=[];let mx=0,my=0;for(let i=0;i<r.length;i+=2){mx+=r[i];my+=r[i+1]}mx/=r.length/2;my/=r.length/2;
+      for(let i=0;i<r.length;i+=2)P.push(new THREE.Vector2(mx+(r[i]-mx)*.985,my+(r[i+1]-my)*.985));
       let g;try{g=new THREE.ExtrudeGeometry(new THREE.Shape(P),{depth:Math.max(2.5,b.h),bevelEnabled:false})}catch(e){ranges.push([tv,tv]);return}
       g.rotateX(-Math.PI/2);
       let cx=0,cy=0;for(let i=0;i<r.length;i+=2){cx+=r[i];cy+=r[i+1]}cx/=r.length/2;cy/=r.length/2;b._cx=cx;b._cy=cy;
@@ -87,9 +88,9 @@ export function createTwin(opts){
     const pos=flat(bp,tv*3),nor=flat(bn,tv*3);
     const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(pos,3));geo.setAttribute('normal',new THREE.BufferAttribute(nor,3));
     geo.setAttribute('aDelay',new THREE.BufferAttribute(new Float32Array(bd),1));
-    const cur=new Float32Array(tv*3),tgt=new Float32Array(tv*3);const shade=new Float32Array(tv);for(let v=0;v<tv;v++)shade[v]=nor[v*3+1]>.5?1.15:.72;
+    const cur=new Float32Array(tv*3),tgt=new Float32Array(tv*3),from=new Float32Array(tv*3),dly=Float32Array.from(bd);const shade=new Float32Array(tv);for(let v=0;v<tv;v++)shade[v]=nor[v*3+1]>.5?1.15:.72;
     geo.setAttribute('color',new THREE.BufferAttribute(cur,3));geo.computeBoundingSphere();
-    const bmat=riseMaterial(new THREE.MeshStandardMaterial({vertexColors:true,roughness:.55,metalness:.2}));bmat.userData.uRise=uni.uRise;
+    const bmat=riseMaterial(new THREE.MeshStandardMaterial({vertexColors:true,roughness:.55,metalness:.2,polygonOffset:true,polygonOffsetFactor:1,polygonOffsetUnits:1}));bmat.userData.uRise=uni.uRise;
     const mesh=new THREE.Mesh(geo,bmat);mesh.frustumCulled=false;group.add(mesh);
     const eN=ep.reduce((s,a)=>s+a.length,0),eGeo=new THREE.BufferGeometry();eGeo.setAttribute('position',new THREE.BufferAttribute(flat(ep,eN),3));eGeo.setAttribute('aDelay',new THREE.BufferAttribute(new Float32Array(ed),1));
     const emat=riseMaterial(new THREE.LineBasicMaterial({color:0x7fc3ff,transparent:true,opacity:.42,depthWrite:false}));emat.userData.uRise=uni.uRise;
@@ -128,22 +129,25 @@ export function createTwin(opts){
     const pinGroup=new THREE.Group();pinGroup.visible=false;group.add(pinGroup);const pinRings=[];
     pins.forEach(o=>{const h=R*.16,l=new THREE.Mesh(new THREE.CylinderGeometry(.9,.9,h,6),new THREE.MeshBasicMaterial({color:0xff6a4d,transparent:true,opacity:.85}));l.position.set(o.b._cx,h/2,-o.b._cy);pinGroup.add(l);
       for(let k=0;k<2;k++){const rg=new THREE.Mesh(new THREE.RingGeometry(.85,1,48),new THREE.MeshBasicMaterial({color:0xff6a4d,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide}));rg.rotation.x=-Math.PI/2;rg.position.set(o.b._cx,.6,-o.b._cy);pinGroup.add(rg);pinRings.push({m:rg,ph:k/2})}});
-    const mk=(tag,label,value,pos,steps,side)=>{const el=document.createElement('div');el.className='tl tl-'+(side||'right');el.innerHTML=`<span class="tl-dot"></span><span class="tl-box"><span class="tl-tag">${tag}</span><span class="tl-label">${label}</span><b class="tl-value">${value}</b></span>`;(opts.labelsEl||canvas.parentElement).appendChild(el);const o={el,pos,steps,v:el.querySelector('.tl-value'),a:0};labels.push(o);return o};
+    const mk=(tag,label,value,pos,steps,side,layer)=>{const el=document.createElement('div');el.className='tl tl-'+(side||'right');el.innerHTML=`<span class="tl-dot"></span><span class="tl-box"><span class="tl-tag">${tag}</span><span class="tl-label">${label}</span><b class="tl-value">${value}</b></span>`;(opts.labelsEl||canvas.parentElement).appendChild(el);const o={el,pos,steps,layer,v:el.querySelector('.tl-value'),a:0};labels.push(o);return o};
     const topOf=o=>new THREE.Vector3(o.b._cx,Math.max(2.5,o.b.h),-o.b._cy);
     const scanLabel=mk('SCAN','BAG footprints + heights','0 pts',new THREE.Vector3(0,R*.05,0),[0],'right');
-    mk('MODEL','Tallest building',tall.b.h.toFixed(0)+' m',topOf(tall),[1],'left');
-    mk('HEAT','Hottest building',hot.b.l.toFixed(1)+' °C',topOf(hot),[2],'right');
-    mk('HEAT','Coolest building',cool.b.l.toFixed(1)+' °C',topOf(cool),[2],'left');
-    pins.forEach((o,i)=>{const L=mk('PRIORITY','Hot spot '+(i+1),o.b.l.toFixed(1)+' °C',new THREE.Vector3(o.b._cx,R*.16,-o.b._cy),[3],i%2?'left':'right');L.pin=i});
+    mk('MODEL','Tallest building',tall.b.h.toFixed(0)+' m (BAG)',topOf(tall),[1],'left','height');
+    mk('HEAT','Hottest building',hot.b.l.toFixed(1)+' °C',topOf(hot),[2],'right','heat');
+    mk('HEAT','Coolest building',cool.b.l.toFixed(1)+' °C',topOf(cool),[2],'left','heat');
+    const gB=bs.map((b,i)=>({b,i})),greenest=gB.slice().sort((a,b)=>b.b.g-a.b.g||a.b.l-b.b.l)[0],leastG=gB.slice().sort((a,b)=>a.b.g-b.b.g||b.b.l-a.b.l)[0];
+    mk('GREENERY','Greenest surroundings',Math.round(greenest.b.g*100)+' / 100',topOf(greenest),[],'right','ndvi');
+    mk('GREENERY','Least green surroundings',Math.round(leastG.b.g*100)+' / 100',topOf(leastG),[],'left','ndvi');
+    pins.forEach((o,i)=>{const L=mk('PRIORITY','Hot spot '+(i+1),o.b.l.toFixed(1)+' °C',new THREE.Vector3(o.b._cx,R*.16,-o.b._cy),[3],i%2?'left':'right','priority');L.pin=i});
 
-    world={group,mesh,geo,ranges,shade,cur,tgt,edges,points,px,N,scanFlip,scanMat,rings,pinGroup,pinRings,scanLabel,bs,tv};
+    world={group,mesh,geo,ranges,shade,cur,tgt,from,dly,edges,points,px,N,scanFlip,scanMat,rings,pinGroup,pinRings,scanLabel,bs,tv};
     S.layer='';applyLayer('neutral',true);
   }
 
   function colorFor(b,m,out){
     switch(m){
       case 'heat':return out.copy(lerpHex(HEAT,(b.l-36)/(43-36)));
-      case 'ndvi':return out.copy(lerpHex(['#10241d','#2f6b3e','#7ee08a','#d6ffd9'],b.n/.6));
+      case 'ndvi':return out.copy(lerpHex(['#0a1f1b','#14503a','#25a064','#7be08f','#e6ffd2'],Math.pow(clamp(b.g,0,1),.85)));
       case 'height':return out.copy(lerpHex(['#16335c','#3d78c4','#6bb3ff','#ffffff'],b.h/22));
       case 'priority':return b.c===3?out.set('#ff4d3d'):out.copy(lerpHex(['#0e2447','#1b3b6b'],(b.l-36)/7));
       default:return out.set('#10294f');
@@ -152,7 +156,7 @@ export function createTwin(opts){
   function applyLayer(m,instant){
     if(!world||S.layer===m)return;S.layer=m;const tmp=new THREE.Color(),{bs,ranges,shade,tgt,cur}=world;
     bs.forEach((b,i)=>{colorFor(b,m,tmp);const[a,zz]=ranges[i];for(let v=a;v<zz;v++){const k=shade[v];tgt[v*3]=tmp.r*k;tgt[v*3+1]=tmp.g*k;tgt[v*3+2]=tmp.b*k}});
-    if(instant)cur.set(tgt);colorAnim=instant?0:1.4;world.geo.attributes.color.needsUpdate=true;
+    if(instant){cur.set(tgt);colorAnim=0}else{world.from.set(cur);colorAnim=1;animT=0}world.geo.attributes.color.needsUpdate=true;
     if(opts.onLayer)opts.onLayer(m);
   }
 
@@ -192,7 +196,7 @@ export function createTwin(opts){
     const dt=Math.min((now-S.last)/1000,.1);S.last=now;
     if(!world||!S.visible)return;
     const R=S.R;let p;
-    if(mode==='card'){const T=(now-S.t0)/1000,L=17;p=reduce?.9:clamp((T%L)/12.5,0,1)*.78+.0;S.B=p}
+    if(mode==='card'){const T=(now-S.t0)/1000,L=19,u=T%L;p=reduce?.9:(u<12?u/12:u<15?1:1-sm(clamp((u-15)/4,0,1)))*.78;S.B=p}
     else{S.B+=(S.p-S.B)*Math.min(dt*5,1);if(Math.abs(S.p-S.B)<5e-4)S.B=S.p;p=S.B}
     if(mode==='story'&&W>=900){const off=-W*.16*(1-z(p,.76,.82));if(Math.abs(off-(S.off||0))>.5){S.off=off;camera.setViewOffset(W,H,off,0,W,H);camera.updateProjectionMatrix()}}
     const explore=mode==='story'&&p>=.795;
@@ -205,9 +209,11 @@ export function createTwin(opts){
     /* layer by step */
     const want=mode==='card'?(p<.4?'neutral':p<.6?'heat':'priority'):step<=1?'neutral':step===2?'heat':step===3?'priority':(S.user||'heat');
     if(want!==S.layer)applyLayer(want);
-    if(colorAnim>0){colorAnim=Math.max(0,colorAnim-dt);const k=1-Math.exp(-dt*7),c=world.cur,t=world.tgt;for(let i=0;i<c.length;i++)c[i]+=(t[i]-c[i])*k;if(colorAnim===0)c.set(t);world.geo.attributes.color.needsUpdate=true}
+    if(colorAnim>0){animT+=dt/1.5;const c=world.cur,t=world.tgt,f0=world.from,d=world.dly,n=d.length;
+      for(let v=0;v<n;v++){let u=clamp((animT*1.55-d[v]*.55)/.45,0,1);u=1-Math.pow(1-u,3);const i=v*3;c[i]=f0[i]+(t[i]-f0[i])*u;c[i+1]=f0[i+1]+(t[i+1]-f0[i+1])*u;c[i+2]=f0[i+2]+(t[i+2]-f0[i+2])*u}
+      if(animT>=1.2){c.set(t);colorAnim=0}world.geo.attributes.color.needsUpdate=true}
     /* scan */
-    const idle=(mode==='story'&&!reduce&&p<.02)?clamp((((now-S.t0)/1000)%9)/7,0,1)*(1-z(p,0,.02)):0,s=Math.max(z(p,0,.19),idle),scanX=-R*1.04+s*R*2.08;uni.uScanX.value=p>.19?1e9:scanX;
+    const idle=(mode==='story'&&!reduce&&p<.02)?(()=>{const u=(((now-S.t0)/1000)%14)/14,tri=u<.5?u*2:2-u*2;return sm(clamp(tri*1.15,0,1))})()*(1-z(p,0,.02)):0,s=Math.max(z(p,0,.19),idle),scanX=-R*1.04+s*R*2.08;uni.uScanX.value=p>.19?1e9:scanX;
     uni.uRise.value=z(p,.2,.34)*1.0;uni.uOpacity.value=1-z(p,.24,.36)*.9;
     uni.uSize.value=mode==='card'?1.5:2.3;
     world.edges.material.opacity=.42*z(p,.22,.34);
@@ -233,13 +239,13 @@ export function createTwin(opts){
     labels.forEach(l=>{
       const on=mode==='card'?(l.steps[0]===clamp(Math.floor(p/.2),0,3)&&(l.steps[0]===0||l.steps[0]===2||l.steps[0]===3)):l.steps.includes(step);
       const hide=mode==='card'&&l.pin>0;
-      l.a+=((on&&!explore&&!hide?1:0)-l.a)*Math.min(dt*8,1);
+      const want=l.layer&&explore?(S.layer===l.layer&&!fly&&true):(on&&!explore&&!hide);
+      l.a+=((want?1:0)-l.a)*Math.min(dt*7,1);
       if(l===world.scanLabel){l.pos.set(scanX,R*.04,0);l.v.textContent=Math.round(S.pts*2.6).toLocaleString('en-GB')+' pts'}
       v3.copy(l.pos).project(camera);const vis=l.a>.02&&v3.z<1;
-      l.el.style.opacity=vis?l.a.toFixed(3):0;l.el.style.visibility=vis?'visible':'hidden';
+      l.el.style.opacity=vis?l.a.toFixed(3):0;l.el.style.setProperty('--p',l.a.toFixed(3));l.el.style.visibility=vis?'visible':'hidden';
       if(vis){const sx=(v3.x*.5+.5)*W,sy=(-v3.y*.5+.5)*H;
-        if(mode==='story'&&W>=900&&sx<W*.46){l.el.style.visibility='hidden'}
-        else{l.el.classList.toggle('tl-left',sx>W*.64);l.el.classList.toggle('tl-right',sx<=W*.64);l.el.style.transform=`translate(${sx.toFixed(1)}px,${sy.toFixed(1)}px)`}}
+        {const fade=mode==='story'&&W>=900?clamp((sx-W*.40)/(W*.08),0,1):1;l.el.style.opacity=(l.a*fade).toFixed(3);l.el.classList.toggle('tl-left',sx>W*.64);l.el.classList.toggle('tl-right',sx<=W*.64);l.el.style.transform=`translate(${sx.toFixed(1)}px,${sy.toFixed(1)}px)`}}
     });
     renderer.render(scene,camera);
     if(opts.onFrame)opts.onFrame({p,step,pts:Math.round(S.pts*2.6),explore});
