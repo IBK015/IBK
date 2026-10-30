@@ -178,7 +178,7 @@ video{width:100%;border-radius:var(--radius-sm);border:1px solid var(--line);bac
 .final h2{max-width:16ch}
 .collab{margin-top:64px;padding-top:28px;border-top:1px solid var(--line);display:flex;gap:14px 36px;flex-wrap:wrap;align-items:center;color:var(--text-tertiary);font-size:15px}
 .collab b{color:var(--text-secondary);font-weight:600}
-@media (max-height:660px) and (min-width:761px){.pills{display:none}.step h1{font-size:clamp(2rem,1.4rem + 2.4vw,3.2rem)}.copy{top:max(50%,300px)}}
+@media (max-height:760px) and (min-width:761px){.copy{bottom:96px}.step h1{font-size:clamp(1.9rem,1.2rem + 2vw,2.7rem);margin-bottom:12px}.step .lede{font-size:15px;line-height:1.5}.step .cta{margin-top:14px}}
 .rampbar{display:grid;grid-template-columns:1fr auto;gap:4px 8px;margin-top:10px;font:500 11px var(--mono);color:var(--text-tertiary)}
 .rampbar i{grid-column:1/-1;height:8px;border-radius:99px}
 .rampbar span:last-child{text-align:right}
@@ -245,8 +245,8 @@ html.intro{overflow:hidden}
 .stage>.c3{left:20px;bottom:20px;border-right:0;border-top:0}.stage>.c4{right:20px;bottom:20px;border-left:0;border-top:0}
 .stage .hud{position:absolute;z-index:6;left:max(44px,calc((100vw - 1200px)/2));top:96px;display:flex;gap:22px;flex-wrap:wrap;font:500 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--text-tertiary)}
 .stage .hud b{color:var(--accent);font-weight:600}
-.copy{position:absolute;z-index:6;left:max(44px,calc((100vw - 1200px)/2));top:max(50%,340px);transform:translateY(-50%);width:min(520px,calc(100% - 88px));pointer-events:none}
-.step{position:absolute;left:0;right:0;top:0;transform:translateY(-50%);opacity:0;visibility:hidden;transition:opacity var(--d-slower) var(--ease),visibility var(--d-slower)}
+.copy{position:absolute;z-index:6;left:max(44px,calc((100vw - 1200px)/2));top:auto;bottom:108px;transform:none;width:min(520px,calc(100% - 88px));pointer-events:none}
+.step{position:absolute;left:0;right:0;top:auto;bottom:0;transform:none;opacity:0;visibility:hidden;transition:opacity var(--d-slower) var(--ease),visibility var(--d-slower)}
 .step>*{transform:translateY(18px);opacity:0;transition:transform var(--d-7) var(--ease),opacity var(--d-7) var(--ease)}
 .step.is-active{opacity:1;visibility:visible;pointer-events:none}
 .step.is-active>*{transform:none;opacity:1}
@@ -313,8 +313,8 @@ html.intro{overflow:hidden}
 .is-exploring .dock .panel+.panel{animation-delay:.12s}
 @keyframes dockIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
 .dock .chip{min-height:38px;font-size:13px}
-.is-exploring .copy{top:150px;transform:none}
-.is-exploring .step[data-s="4"]{top:0;transform:none}
+.is-exploring .copy{top:150px;bottom:auto;transform:none}
+.is-exploring .step[data-s="4"]{top:0;bottom:auto;transform:none}
 .is-exploring .step[data-s="4"] h2{font-size:1.55rem;margin-bottom:8px}
 .is-exploring .step[data-s="4"] .lede{font-size:14px;max-width:36ch;color:var(--text-tertiary)}
 .dock .big{font-size:22px}
