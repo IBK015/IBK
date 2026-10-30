@@ -857,3 +857,10 @@ h1, h2, h3, h4 {
 .tl-tag { font: 600 .6rem ui-monospace, Menlo, Consolas, monospace; letter-spacing: .2em; color: #6bb3ff; }
 .tl-label { font-size: .72rem; color: #c9d4e4; }
 .tl-value { font-size: 1rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+
+/* whole-card link */
+.training-card{position:relative}
+.card-link{color:inherit;text-decoration:none}
+.card-link::after{content:"";position:absolute;inset:0;border-radius:inherit}
+.training-card:has(.card-link):hover{border-color:var(--accent,#6bb3ff);transform:translateY(-2px)}
+.card-link:focus-visible{outline:2px solid var(--accent,#6bb3ff);outline-offset:4px}
