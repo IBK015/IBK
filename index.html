@@ -80,19 +80,19 @@
     </div>
   </section>
 
-  <!-- DIGITAL TWIN CARD (motion graphic, links to dt/) -->
+  <!-- DIGITAL TWIN CARD (scan-to-twin scene on real data, links to dt/) -->
   <div class="banner-wrap">
     <a class="twin-card" id="twinCard" href="dt/index.html" aria-label="Open the Digital Twin showcase: urban heat mapping and digital twin modelling">
       <div class="tc-mesh" aria-hidden="true"></div>
-      <div class="tc-scene">
+      <div class="tc-scene" id="tcScene">
         <canvas id="twinCanvas" aria-hidden="true"></canvas>
-        <div class="tc-tip" id="twinTip" role="tooltip"></div>
+        <div class="tc-hud" aria-hidden="true"><span id="tcPos">52.10&deg;N 5.05&deg;E</span><span><b id="tcPts">0</b> pts</span><span id="tcStep">SCAN</span></div>
         <p class="tc-cap">Urban heat mapping &#183; Digital twin modeling</p>
       </div>
       <div class="tc-copy">
         <p class="tc-eyebrow tc-a">Digital Twin Work</p>
         <h2 class="tc-title tc-a">Urban heat, modelled <em>block by block.</em></h2>
-        <p class="tc-lede tc-a">Two digital twins on real public data: a heat-resilience twin for Veiligheidsregio Utrecht and a wastewater-screening twin from the Space &amp; Water Nexus Hackathon. Hover the tiles and icons, then open the showcase.</p>
+        <p class="tc-lede tc-a">Watch a real Utrecht neighbourhood go from point cloud to heat map to priority list. Two digital twins on real public data, one for Veiligheidsregio Utrecht and one from the Space &amp; Water Nexus Hackathon.</p>
         <ul class="tc-stats tc-a" aria-label="Key figures">
           <li><b>111</b><span>buurten scored</span></li>
           <li><b>28</b><span>indicators</span></li>
@@ -103,40 +103,34 @@
       <div class="tc-grain" aria-hidden="true"></div>
     </a>
   </div>
-  <script src="js/iso-twin.js" defer></script>
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var card = document.getElementById('twinCard'), canvas = document.getElementById('twinCanvas'), tip = document.getElementById('twinTip');
-    if (!card || !window.IsoTwin) return;
-    var NODES = [
-      { icon: 'thermo', color: '#ff7a59', x: .07, y: .2, cell: [1, 1], title: 'Land surface temperature', text: 'Landsat 8/9, averaged in a 25 m buffer around each building.' },
-      { icon: 'leaf', color: '#4fd1a5', x: .92, y: .18, cell: [5, 1], title: 'Vegetation', text: 'Sentinel-2 NDVI: greenery that cools a block.' },
-      { icon: 'drop', color: '#3aa8f0', x: .94, y: .6, cell: [5, 5], title: 'Water and surfaces', text: 'Hardened vs permeable surface, from NDBI and land cover.' },
-      { icon: 'chart', color: '#4fd1a5', x: .08, y: .78, cell: [1, 5], title: '28 weighted indicators', text: 'Social, economic, infrastructure and environment, per buurt.' }
-    ];
-    function fallback() {
-      var cells = [], n = 7;
-      for (var j = 0; j < n; j++) for (var i = 0; i < n; i++) {
-        var d = Math.hypot(i - 3, j - 3), e = ((i * 7 + j * 3) % 5 === 0);
-        cells.push(e ? { i: i, j: j, n: 0 } : { i: i, j: j, n: 8, lst: 37 + (4 - d) * .9 + ((i * j) % 3) * .3, ndvi: .2, h: 6 + (4 - d) * 2 });
-      }
-      return { n: n, cells: cells, lst: [36, 41.5], count: 1702 };
-    }
-    function start(data) {
-      var t = IsoTwin.create({
-        canvas: canvas, host: canvas.parentElement, nodes: NODES, gridWidth: .62, gridCenterX: .5,
-        onHover: function (c, node, e) {
-          if (!c && !node) { tip.classList.remove('on'); return; }
-          var r = card.getBoundingClientRect();
-          tip.innerHTML = node ? '<b>' + node.title + '</b><br>' + node.text : '<b>' + c.lst + ' &deg;C</b> mean surface temp<br>' + c.n + ' buildings &middot; ~' + Math.round(c.h) + ' m';
-          tip.style.left = Math.min(r.width - 250, Math.max(8, e.clientX - r.left + 14)) + 'px'; tip.style.top = Math.max(8, e.clientY - r.top + 14) + 'px'; tip.classList.add('on');
-        }
-      });
-      t.setData(data);
-      if ('IntersectionObserver' in window) { var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { card.classList.add('in'); t.replay(); io.disconnect(); } }, { threshold: .25 }); io.observe(card); } else card.classList.add('in');
-    }
-    fetch('dt/data/mini.json').then(function (r) { return r.json(); }).then(function (d) { start(d.terwijde); }).catch(function () { start(fallback()); });
-  });
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+  <script type="module">
+  const card = document.getElementById('twinCard');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const webgl = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
+  const reveal = () => card.classList.add('in');
+  if (!webgl || reduce || (navigator.connection && navigator.connection.saveData)) {
+    card.classList.add('is-static'); reveal();
+  } else {
+    const names = ['SCAN', 'MODEL', 'HEAT', 'PRIORITY'];
+    const start = async () => {
+      try {
+        const [{ createTwin }, data] = await Promise.all([import('./dt/js/twin-scene.js'), fetch('dt/data/terwijde.json').then(r => r.json())]);
+        const ptr = { x: .5 };
+        card.addEventListener('pointermove', e => { const r = card.getBoundingClientRect(); ptr.x = (e.clientX - r.left) / r.width; });
+        let last = -1, lastStep = '';
+        const t = createTwin({
+          canvas: document.getElementById('twinCanvas'), mode: 'card', reduce, labelsEl: document.getElementById('tcScene'), observe: card, pointer: ptr,
+          onFrame: f => {
+            if (f.pts !== last) { last = f.pts; document.getElementById('tcPts').textContent = f.pts.toLocaleString('en'); }
+            const n = names[Math.min(3, Math.floor(f.p / .2))]; if (n !== lastStep) { lastStep = n; document.getElementById('tcStep').textContent = n; }
+          }
+        });
+        t.setData(data); card.classList.add('is-live');
+      } catch (e) { console.warn('3D card unavailable', e); card.classList.add('is-static'); }
+    };
+    if ('IntersectionObserver' in window) { const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { reveal(); start(); io.disconnect(); } }, { rootMargin: '300px', threshold: .05 }); io.observe(card); } else { reveal(); start(); }
+  }
   </script>
 
   <!-- ABOUT -->

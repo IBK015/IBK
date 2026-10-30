@@ -804,7 +804,7 @@ h1, h2, h3, h4 {
 @keyframes tcDrift { 0%,100% { transform: translate(0,0); } 50% { transform: translate(40px,26px); } }
 .tc-scene { position: relative; height: 100%; min-height: 460px; }
 .tc-scene canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.tc-cap { position: absolute; left: 0; right: 0; bottom: 18px; margin: 0; text-align: center; font-size: .78rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 700; color: var(--accent); pointer-events: none; }
+.tc-cap { text-shadow: 0 0 12px #030b17, 0 0 4px #030b17; position: absolute; left: 0; right: 0; bottom: 18px; margin: 0; text-align: center; font-size: .78rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 700; color: var(--accent); pointer-events: none; }
 .tc-copy { padding: 40px 44px 40px 8px; }
 .tc-eyebrow { margin: 0 0 12px; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
 .tc-title { margin: 0 0 16px; font-family: var(--font-display); font-size: clamp(1.9rem, 1.3rem + 2vw, 2.9rem); line-height: 1.04; letter-spacing: -.03em; font-weight: 800; display: block; }
@@ -837,3 +837,23 @@ h1, h2, h3, h4 {
   .tc-a { opacity: 1; transform: none; }
   .twin-card.in .tc-a { animation: none; }
 }
+
+/* card v2: scan-to-twin scene */
+.tc-scene { background: radial-gradient(520px 360px at 55% 45%, #0a2147 0%, #030b17 75%); }
+.twin-card { background: #030b17; }
+.tc-hud { position: absolute; z-index: 4; left: 18px; top: 16px; display: flex; gap: 16px; flex-wrap: wrap; font: 500 .68rem/1 ui-monospace, Menlo, Consolas, monospace; letter-spacing: .16em; text-transform: uppercase; color: #a6b2c4; pointer-events: none; }
+.tc-hud b { color: #6bb3ff; font-weight: 600; font-variant-numeric: tabular-nums; }
+.tc-scene::before, .tc-scene::after { content: ""; position: absolute; z-index: 4; width: 16px; height: 16px; border: 1px solid rgba(166,178,196,.4); pointer-events: none; }
+.tc-scene::before { left: 10px; top: 10px; border-right: 0; border-bottom: 0; }
+.tc-scene::after { left: 10px; bottom: 10px; border-right: 0; border-top: 0; }
+.twin-card.is-static .tc-scene { background: #030b17 url("../dt/assets/vru-04_buurt_3d_zambesidreef.jpg") center/cover; }
+.twin-card.is-static #twinCanvas, .twin-card.is-static .tc-hud { display: none; }
+.tl { position: absolute; left: 0; top: 0; will-change: transform; pointer-events: none; visibility: hidden; opacity: 0; z-index: 3; }
+.tl-dot { position: absolute; left: -5px; top: -5px; width: 10px; height: 10px; border-radius: 50%; background: #6bb3ff; box-shadow: 0 0 0 5px rgba(107,179,255,.22), 0 0 16px rgba(107,179,255,.8); }
+.tl-box { position: absolute; top: -34px; white-space: nowrap; padding: 7px 12px; border: 1px solid rgba(107,179,255,.45); background: rgba(3,11,23,.84); border-radius: 10px; display: flex; flex-direction: column; gap: 1px; }
+.tl-box::before { content: ""; position: absolute; top: 34px; width: 22px; height: 1px; background: rgba(107,179,255,.45); }
+.tl-right .tl-box { left: 22px; } .tl-right .tl-box::before { left: -22px; }
+.tl-left .tl-box { right: 22px; } .tl-left .tl-box::before { right: -22px; }
+.tl-tag { font: 600 .6rem ui-monospace, Menlo, Consolas, monospace; letter-spacing: .2em; color: #6bb3ff; }
+.tl-label { font-size: .72rem; color: #c9d4e4; }
+.tl-value { font-size: 1rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
