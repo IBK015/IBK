@@ -59,14 +59,25 @@ header.bar.solid{background:rgba(0,0,0,.78);backdrop-filter:blur(14px);border-bo
 .btn:disabled,.btn[aria-disabled=true]{opacity:.4;pointer-events:none}
 .menu-btn{display:none}
 /* hero */
-.hero{position:relative;height:100svh;min-height:680px;overflow:hidden}
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:120px 0 72px;overflow:hidden}
 .stage-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
 .stage-canvas:active{cursor:grabbing}
-.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,0) 70%),linear-gradient(0deg,rgba(0,0,0,.85),rgba(0,0,0,0) 40%)}
-.hud{position:absolute;z-index:5;left:max(20px,calc((100vw - 1200px)/2));top:92px;display:flex;gap:18px;flex-wrap:wrap;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-tertiary)}
+.mesh{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.mesh::before,.mesh::after{content:"";position:absolute;border-radius:50%;filter:blur(70px)}
+.mesh::before{width:640px;height:640px;right:-6%;top:6%;background:rgba(107,179,255,.16);animation:drift 16s var(--ease) infinite}
+.mesh::after{width:520px;height:520px;left:-8%;bottom:-18%;background:rgba(255,138,43,.1);animation:drift 20s var(--ease) infinite reverse}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(44px,28px)}}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.htext .lede{max-width:50ch}
+.mini{position:relative;height:min(580px,72svh);min-height:430px;border:1px solid var(--line-strong);border-radius:var(--radius-sm);overflow:hidden;background:linear-gradient(160deg,#0a1a33,#050c1a);box-shadow:var(--shadow-2)}
+.mini canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.mini-top{position:absolute;z-index:3;left:14px;right:14px;top:14px;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.mini-top .seg{pointer-events:auto}
+.mini-top .chip{background:rgba(7,21,43,.82);backdrop-filter:blur(8px)}
+.mini-read{position:absolute;z-index:3;left:14px;right:14px;bottom:14px;font-size:14px;color:var(--text-secondary);min-height:56px}
+.mini-read b{color:#fff}
+.hud{position:absolute;z-index:5;left:max(20px,calc((100vw - 1200px)/2));top:84px;display:flex;gap:18px;flex-wrap:wrap;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-tertiary)}
 .hud b{color:var(--accent);font-weight:600}
-.hero-copy{position:absolute;z-index:5;left:max(20px,calc((100vw - 1200px)/2));bottom:64px;max-width:min(640px,calc(100% - 40px));pointer-events:none}
-.hero-copy .btn,.hero-copy a{pointer-events:auto}
 .eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 14px}
 h1{font-size:clamp(2.5rem,1.8rem + 4.2vw,5.4rem);line-height:1;letter-spacing:-.035em;margin:0 0 20px;font-weight:700}
 h1 em{font-style:normal;color:var(--accent)}
@@ -74,7 +85,7 @@ h1 em{font-style:normal;color:var(--accent)}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
 .panel{background:rgba(7,21,43,.78);border:1px solid var(--line);border-radius:var(--radius-sm);backdrop-filter:blur(14px);padding:16px}
 .dock{position:absolute;z-index:6;right:max(20px,calc((100vw - 1200px)/2));top:92px;width:min(330px,calc(100% - 40px));display:flex;flex-direction:column;gap:12px}
-.dock h2,.dock .t{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-tertiary);font-weight:600;margin:0 0 10px}
+.panel .t,.dock h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-tertiary);font-weight:600;margin:0 0 10px}
 .seg{display:flex;flex-wrap:wrap;gap:6px}
 .chip{font:500 14px var(--font);color:var(--text-secondary);background:transparent;border:1px solid var(--line);min-height:40px;padding:0 14px;border-radius:var(--radius-pill);cursor:pointer;transition:background var(--d-fast) var(--ease),color var(--d-fast) var(--ease),border-color var(--d-fast) var(--ease)}
 .chip:hover{border-color:var(--accent);color:#fff}
@@ -175,6 +186,7 @@ dialog form{text-align:right;margin-bottom:8px}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity var(--d-7) var(--ease),transform var(--d-7) var(--ease)}
 .reveal.in{opacity:1;transform:none}
 @media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr}.mini{height:480px}
   .twin{grid-template-columns:1fr}.viewport{min-height:460px}
   .cards,.films,.prin{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr;gap:26px}.steps::before{display:none}
@@ -218,39 +230,55 @@ dialog form{text-align:right;margin-bottom:8px}
 
 <main id="main">
 <div class="hero" id="explore">
-  <canvas class="stage-canvas" id="cv1" tabindex="0" role="application" aria-label="Interactive 3D digital twin of Terwijde-Oost, Utrecht. Drag to orbit, scroll or pinch to zoom, click a building to inspect it. Arrow keys rotate."></canvas>
+  <div class="mesh" aria-hidden="true"></div>
   <div class="hud" aria-live="polite">
     <span id="hudPos">52.10°N 5.05°E</span><span><b id="hudPts" class="mono">0</b> pts</span><span>Step <b id="hudStep" class="mono">01</b> / 05</span>
   </div>
-  <div class="hero-copy">
-    <p class="eyebrow">Explore the digital twin</p>
-    <h1>See the heat before the <em>heatwave.</em></h1>
-    <p class="lede">Two digital twins built on real public data: which Utrecht neighbourhoods a heatwave hits hardest, and where to look first when a wastewater discharge is suspected. Drag the model. Click a building.</p>
-    <div class="cta">
-      <a class="btn btn-primary" href="#water">See the water twin</a>
-      <a class="btn btn-ghost" href="#work">The work in detail</a>
+  <div class="wrap hero-grid">
+    <div class="htext">
+      <p class="eyebrow">Explore the digital twin</p>
+      <h1>See the heat before the <em>heatwave.</em></h1>
+      <p class="lede">A digital twin turns a district into something you can read at a glance. Each tile here is a real slice of Terwijde-Oost, Utrecht: its measured surface temperature, greenery and building height. Hover a tile. Click one to zoom into its real buildings.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#twin3d">Zoom into every building</a>
+        <a class="btn btn-ghost" href="#water">See the water twin</a>
+      </div>
+    </div>
+    <div class="mini" id="mini">
+      <canvas id="miniCv" role="img" aria-label="Compact isometric digital twin of Terwijde-Oost. Tiles rise by building height and are coloured by heat. Hover a tile to read it; click to open it in the full 3D model."></canvas>
+      <div class="mini-top">
+        <div class="seg" role="group" aria-label="District"><button class="chip" type="button" data-md="terwijde" aria-pressed="true">Terwijde-Oost</button><button class="chip" type="button" data-md="zambesidreef" aria-pressed="false">Zambesidreef</button></div>
+        <div class="seg" role="group" aria-label="Layer"><button class="chip" type="button" data-mm="heat" aria-pressed="true">Heat</button><button class="chip" type="button" data-mm="ndvi" aria-pressed="false">Vegetation</button><button class="chip" type="button" data-mm="height" aria-pressed="false">Height</button></div>
+      </div>
+      <div class="mini-read panel" id="miniRead" aria-live="polite">Hover a tile to read it.</div>
     </div>
   </div>
-  <div class="dock">
-    <div class="panel">
-      <p class="t">District</p>
-      <div class="seg" role="group" aria-label="District">
-        <button class="chip" type="button" data-d="terwijde" aria-pressed="true">Terwijde-Oost</button>
-        <button class="chip" type="button" data-d="zambesidreef" aria-pressed="false">Zambesidreef</button>
-      </div>
-      <p class="t" style="margin-top:16px">Layer</p>
-      <div class="seg" role="group" aria-label="Layer">
-        <button class="chip" type="button" data-m="class" aria-pressed="true">Heat class</button>
-        <button class="chip" type="button" data-m="lst" aria-pressed="false">Surface temp</button>
-        <button class="chip" type="button" data-m="ndvi" aria-pressed="false">Vegetation</button>
-        <button class="chip" type="button" data-m="height" aria-pressed="false">Height</button>
-      </div>
-      <div class="legend" id="legend"></div>
-    </div>
-    <div class="panel sel" id="sel" aria-live="polite"><p class="t" style="margin:0 0 6px">Building</p>Hover or tap a building to inspect it.</div>
-  </div>
-  <a class="scrollcue" href="#water">Scroll</a>
+  <a class="scrollcue" href="#twin3d">Scroll</a>
 </div>
+
+<section id="twin3d">
+  <div class="wrap">
+    <p class="eyebrow reveal">Zoom in · full detail</p>
+    <h2 class="sec reveal">Every building, at its real height.</h2>
+    <p class="sub reveal">The same district without the simplification: 1,702 buildings in Terwijde-Oost and 906 in Zambesidreef, each classified by the heat measured around it. Drag to orbit, scroll to zoom, click a building to inspect it.</p>
+    <div class="twin">
+      <div class="viewport" id="vp1" style="min-height:620px">
+        <canvas class="stage-canvas" id="cv1" tabindex="0" role="application" aria-label="Interactive 3D digital twin. Drag to orbit, scroll or pinch to zoom, click a building to inspect it. Arrow keys rotate."></canvas>
+        <div class="vp-note">Real BAG footprints and heights · Landsat 8/9 surface temperature</div>
+      </div>
+      <div class="side">
+        <div class="panel">
+          <p class="t">District</p>
+          <div class="seg" role="group" aria-label="District"><button class="chip" type="button" data-d="terwijde" aria-pressed="true">Terwijde-Oost</button><button class="chip" type="button" data-d="zambesidreef" aria-pressed="false">Zambesidreef</button></div>
+          <p class="t" style="margin-top:16px">Layer</p>
+          <div class="seg" role="group" aria-label="Layer"><button class="chip" type="button" data-m="class" aria-pressed="true">Heat class</button><button class="chip" type="button" data-m="lst" aria-pressed="false">Surface temp</button><button class="chip" type="button" data-m="ndvi" aria-pressed="false">Vegetation</button><button class="chip" type="button" data-m="height" aria-pressed="false">Height</button></div>
+          <div class="legend" id="legend"></div>
+        </div>
+        <div class="panel sel" id="sel" aria-live="polite"><p class="t" style="margin:0 0 6px">Building</p>Hover or tap a building to inspect it.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="water">
   <div class="wrap">
@@ -410,7 +438,7 @@ dialog form{text-align:right;margin-bottom:8px}
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')})}
   else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});els.forEach(function(e){io.observe(e)})}
   // step indicator
-  var steps=[['explore',1],['water',2],['work',3],['how',4],['contact',5]],hs=document.getElementById('hudStep');
+  var steps=[['explore',1],['twin3d',2],['water',2],['work',3],['how',4],['contact',5]],hs=document.getElementById('hudStep');
   if('IntersectionObserver' in window){
     var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var st=steps.find(function(x){return x[0]===e.target.id});if(st)hs.textContent='0'+st[1]}})},{rootMargin:'-45% 0px -50% 0px'});
     steps.forEach(function(x){var el=document.getElementById(x[0]);if(el)so.observe(el)});
@@ -420,6 +448,7 @@ dialog form{text-align:right;margin-bottom:8px}
   d.addEventListener('click',function(e){if(e.target===d)d.close()});
 })();
 </script>
+<script src="../js/iso-twin.js"></script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <script type="module">
 import * as THREE from 'three';
@@ -558,13 +587,12 @@ async function loadDistrict(key){
   const d=S1.cache[key]||(S1.cache[key]=await getJSON('data/'+key+'.json'));
   const st=S1.st;
   if(S1.mesh){st.scene.remove(S1.mesh);S1.mesh.geometry.dispose()}
-  highlight(-1);S1.sel=S1.hover=-1;S1.filter=null;
+  highlight(-1);S1.sel=S1.hover=-1;S1.filter=null;S1.key=key;
   const {geo,ranges,shade}=buildGeometry(d.b);
   S1.data=d;S1.ranges=ranges;S1.shade=shade;
   S1.mesh=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({vertexColors:true,roughness:.62,metalness:.08}));
   S1.mesh.castShadow=S1.mesh.receiveShadow=true;st.scene.add(S1.mesh);
   paint();renderLegend();selInfo(-1);
-  $('hudPos').textContent=`${d.lat.toFixed(2)}°N ${d.lon.toFixed(2)}°E`;$('hudPts').textContent=d.b.length.toLocaleString('en');
   st.controls.target.set(0,8,0);st.camera.position.set(430,330,520).multiplyScalar(.9);st.controls.update();
 }
 async function initTwin1(){
@@ -747,19 +775,51 @@ function loop(now){
     st.renderer.render(st.scene,st.camera);
   }
 }
+/* ---------- mini twin (hero) ---------- */
+const MINI={t:null,data:null,key:'terwijde'};
+const MNODES=[
+  {icon:'thermo',color:'#ff7a59',x:.1,y:.34,cell:[1,2],title:'Land surface temperature',text:'Landsat 8/9, averaged in a 25 m buffer around each building.'},
+  {icon:'leaf',color:'#4fd1a5',x:.9,y:.3,cell:[5,2],title:'Vegetation',text:'Sentinel-2 NDVI: greenery that cools a block.'},
+  {icon:'drop',color:'#3aa8f0',x:.92,y:.66,cell:[5,5],title:'Water and surfaces',text:'Hardened vs permeable surface from NDBI and land cover.'},
+  {icon:'chart',color:'#6bb3ff',x:.08,y:.7,cell:[1,5],title:'28 weighted indicators',text:'Social, economic, infrastructure and environment, per buurt.'}
+];
+async function initMini(){
+  const all=await getJSON('data/mini.json');MINI.all=all;
+  const read=$('miniRead'),def='Hover a tile to read it.';
+  MINI.t=IsoTwin.create({canvas:$('miniCv'),host:$('mini'),nodes:MNODES,gridWidth:.7,gridCenterX:.5,
+    accentRGB:'107,179,255',groundRGB:'10,26,51',nodeRGB:'10,26,51',heightStops:['#12315e','#3d78c4','#6bb3ff','#ffffff'],ndviStops:['#12261f','#2f6b3e','#7ee08a','#d6ffd9'],
+    onHover:(c,node,e)=>{
+      if(node){read.innerHTML=`<b>${node.title}</b><br>${node.text}`;return}
+      if(c)read.innerHTML=`<b>${c.lst} °C</b> mean surface temp · NDVI ${c.ndvi} · ${c.n} buildings, ~${Math.round(c.h)} m<br><span style="color:var(--accent)">Click to open this area in 3D ↓</span>`;
+      else read.textContent=def;
+    },
+    onSelect:c=>openInFull(c)});
+  setMini('terwijde');
+  document.querySelectorAll('[data-md]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-md]').forEach(x=>x.setAttribute('aria-pressed',x===b));setMini(b.dataset.md)}));
+  document.querySelectorAll('[data-mm]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-mm]').forEach(x=>x.setAttribute('aria-pressed',x===b));MINI.t.setMode(b.dataset.mm)}));
+}
+function setMini(key){
+  MINI.key=key;const d=MINI.all[key];MINI.t.setData(d);MINI.t.replay();
+  $('hudPos').textContent=`${d.lat.toFixed(2)}°N ${d.lon.toFixed(2)}°E`;$('hudPts').textContent=d.count.toLocaleString('en');
+}
+let full1=null;
+function ensureFull(){return full1||(full1=initTwin1())}
+async function openInFull(c){
+  document.getElementById('twin3d').scrollIntoView({behavior:reduce?'auto':'smooth'});
+  await ensureFull();
+  const key=MINI.key;
+  if(S1.key!==key){document.querySelectorAll('[data-d]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.d===key));await loadDistrict(key)}
+  if(c&&c.n)flyTo(S1.st,new THREE.Vector3(c.cx,8,-c.cy),S1.st.R*.5,1100);
+}
+document.addEventListener('keydown',e=>{});
+
 (async()=>{
-  try{
-    await initTwin1();
-  }catch(e){
-    console.error(e);
-    $('sel').textContent='The 3D view could not load. Open the published site to explore it.';
-    $('nolive').style.display='block';
-  }
+  try{await initMini()}catch(e){console.error(e);$('miniRead').textContent='The mini twin could not load. Open the published site to explore it.'}
   hideLoader();
   requestAnimationFrame(loop);
-  const sec=$('water');
-  if('IntersectionObserver' in window){const o=new IntersectionObserver(es=>{if(es[0].isIntersecting){o.disconnect();initTwin2().catch(e=>{console.error(e);$('nolive').style.display='block'})}},{rootMargin:'600px'});o.observe(sec)}
-  else initTwin2();
+  const lazy=(id,fn,margin)=>{const el=$(id);if(!('IntersectionObserver' in window)){fn();return}const o=new IntersectionObserver(es=>{if(es[0].isIntersecting){o.disconnect();fn()}},{rootMargin:margin});o.observe(el)};
+  lazy('twin3d',()=>ensureFull().catch(e=>{console.error(e);$('sel').textContent='The 3D view could not load. Open the published site to explore it.'}),'700px');
+  lazy('water',()=>initTwin2().catch(e=>{console.error(e);$('nolive').style.display='block'}),'600px');
 })();
 </script>
 </body>
