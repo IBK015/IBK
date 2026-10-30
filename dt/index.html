@@ -177,6 +177,18 @@ video{width:100%;border-radius:var(--radius-sm);border:1px solid var(--line);bac
 .final h2{max-width:16ch}
 .collab{margin-top:64px;padding-top:28px;border-top:1px solid var(--line);display:flex;gap:14px 36px;flex-wrap:wrap;align-items:center;color:var(--text-tertiary);font-size:15px}
 .collab b{color:var(--text-secondary);font-weight:600}
+.collab{display:grid;grid-template-columns:auto 1fr;gap:20px 48px;align-items:center}
+.collab>span{font:600 11px/1 var(--mono,ui-monospace,monospace);letter-spacing:.18em;text-transform:uppercase;color:var(--text-tertiary)}
+.logos{display:flex;flex-wrap:wrap;gap:20px;align-items:stretch}
+.logo{display:flex;align-items:center;justify-content:center;height:84px;min-width:200px;padding:0 30px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.012));text-decoration:none;transition:border-color .35s,background .35s,transform .35s cubic-bezier(.2,.8,.2,1)}
+.logo img{display:block;height:38px;width:auto;max-width:190px;object-fit:contain;filter:brightness(0) invert(1);opacity:.62;transition:opacity .35s}
+.logo.rij img{height:56px;max-width:none}
+.logo:hover,.logo:focus-visible{border-color:rgba(107,179,255,.5);background:rgba(107,179,255,.07);transform:translateY(-3px)}
+.logo:hover img,.logo:focus-visible img{opacity:1}
+.logo .fb{display:none;color:var(--text-secondary);font-weight:600;font-size:15px;text-align:center}
+.logo.nologo .fb{display:block}.logo.nologo img{display:none}
+@media(max-width:760px){.collab{grid-template-columns:1fr}.logo{flex:1 1 calc(50% - 10px);min-width:0;height:72px;padding:0 18px}}
+@media(prefers-reduced-motion:reduce){.logo{transition:none}.logo:hover{transform:none}}
 footer{border-top:1px solid var(--line);padding:36px 0;color:var(--text-tertiary);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 dialog{border:0;padding:0;background:transparent;max-width:min(1200px,94vw);width:100%}
@@ -511,7 +523,11 @@ html.intro{overflow:hidden}
     <h2 class="sec reveal">Tell me the decision you have to make.</h2>
     <p class="sub reveal">I am looking for my next internship or role, six months or longer, building digital twins and spatial decision tools. The VRU source code is private internship work, but I am happy to walk through it on request.</p>
     <div class="cta reveal"><a class="btn btn-primary" href="../index.html#contact">Contact me →</a><a class="btn btn-ghost" href="../index.html">Back to portfolio</a></div>
-    <div class="collab reveal"><span>Built with &amp; for</span><b>Veiligheidsregio Utrecht</b><b>Water Natuurlijk Rijnland</b><b>University of Twente</b></div>
+    <div class="collab reveal"><span>Built with &amp; for</span><div class="logos">
+      <a class="logo" href="https://vru.nl" target="_blank" rel="noopener" aria-label="Veiligheidsregio Utrecht"><img src="https://vru-prod-minio.fourdigits.nl//static/images/vru-footer-logo.svg" alt="Veiligheidsregio Utrecht" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('.logo').classList.add('nologo')"><span class="fb">Veiligheidsregio Utrecht</span></a>
+      <a class="logo rij" href="https://www.rijnland.nl" target="_blank" rel="noopener" aria-label="Hoogheemraadschap van Rijnland"><img src="assets/logo-rijnland.svg" alt="Hoogheemraadschap van Rijnland" loading="lazy" onerror="this.closest('.logo').classList.add('nologo')"><span class="fb">Hoogheemraadschap van Rijnland</span></a>
+      <a class="logo" href="https://www.utwente.nl" target="_blank" rel="noopener" aria-label="University of Twente"><img src="https://utwente.becdn.net/.utdesign/img/ut-logo-sta-white-en.svg" alt="University of Twente" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('.logo').classList.add('nologo')"><span class="fb">University of Twente</span></a>
+    </div></div>
   </div>
 </section>
 </main>
